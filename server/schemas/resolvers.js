@@ -10,10 +10,13 @@ const resolvers = {
           }
           throw new AuthenticationError('Cannot find a user with this id!');
         },
+        allUsers: async () => {
+          return User.find()
+        }
       },
     Mutation: {
-        signUp: async (parent, { email, username, password, birthday }) => {
-            const user = await User.create({ email, username, password, birthday });
+        signUp: async (parent, { email, username, password, birthday, online }) => {
+            const user = await User.create({ email, username, password, birthday, online });
             const token = signToken(user)
             return { token, user}
         },

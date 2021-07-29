@@ -21,6 +21,10 @@ const userSchema = new Schema(
       birthday: {
         type: String,
         required: true,
+      },
+      online: {
+        type: Boolean,
+        default: false,
       }
     },
   );

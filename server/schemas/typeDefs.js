@@ -7,6 +7,7 @@ type User {
     email: String!
     username: String!
     birthday: String!
+    online: Boolean
 }
 
 type Auth {
@@ -16,6 +17,7 @@ type Auth {
 
 type Query {
     me: User
+    allUsers: [User]
 }
 
 type Mutation {
