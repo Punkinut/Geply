@@ -40,7 +40,7 @@ const resolvers = {
       
             return { token, user };
           },
-          logout: async (_, { email }) => {
+          offline: async (_, { email }) => {
             return User.findOneAndUpdate({ email }, { online: false });
           }
     },
