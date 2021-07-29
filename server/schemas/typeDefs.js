@@ -23,6 +23,7 @@ type Query {
 type Mutation {
     signUp(email: String!, username: String!, password: String!, birthday: String!): Auth
     login(email: String!, password: String!): Auth
+    logout(email: String!): User
 }
 
 `;

@@ -20,7 +20,7 @@ const resolvers = {
             const token = signToken(user)
             return { token, user}
         },
-        login: async (parent, { email, password }) => {
+        login: async (_, { email, password }) => {
             
             const user = await User.findOne({ email });
             
@@ -40,6 +40,9 @@ const resolvers = {
       
             return { token, user };
           },
+          logout: async (_, { email }) => {
+            return User.findOneAndUpdate({ email }, { online: false });
+          }
     },
 };
 
