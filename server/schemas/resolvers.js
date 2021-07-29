@@ -21,8 +21,9 @@ const resolvers = {
             return { token, user}
         },
         login: async (parent, { email, password }) => {
+            
             const user = await User.findOne({ email });
-      
+            
             if (!user) {
               throw new AuthenticationError('No user found with this email address');
             }
@@ -34,6 +35,8 @@ const resolvers = {
             }
       
             const token = signToken(user);
+
+            await User.updateOne({ email }, { online: true });
       
             return { token, user };
           },
