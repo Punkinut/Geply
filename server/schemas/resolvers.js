@@ -40,11 +40,11 @@ const resolvers = {
       
             return { token, user };
           },
-          online: async (_, { email }) => {
-            return User.findOneAndUpdate({ email }, { online: true }, {new: true});
+          online: async (_, { email }, context) => {
+            return User.findOneAndUpdate({ _id: context.user._id }, { online: true }, {new: true});
           },
-          offline: async (_, { email }) => {
-            return User.findOneAndUpdate({ email }, { online: false }, {new: true});
+          offline: async (_, { email }, context) => {
+            return User.findOneAndUpdate({ _id: context.user._id }, { online: false }, {new: true});
           }
     },
 };
