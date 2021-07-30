@@ -16,7 +16,7 @@ function Login() {
         exit={{ opacity: 0}}
         >
         <section className='login-container'>
-        <p className='header'>Login</p>
+            <p className='header'>Login</p>
             <form className='signup-form' onSubmit={handleFormSubmit}>
                 <input type='email' placeholder='Email' className='input' required></input>
                 <input minLength='8' type='password' placeholder='Password' className='input'></input>
