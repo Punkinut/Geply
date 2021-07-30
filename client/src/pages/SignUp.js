@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import Button from '../components/Tools/Button'
 
 function SignUp() {
@@ -22,6 +23,7 @@ function SignUp() {
                 <input type='password' placeholder='Password' className='input'></input>
                 <Button type='submit' word="Signup"/>
             </form>
+            <Link className='lil-gray' to={'/login'}><motion.p whileHover={{opacity: 1, scale: 1.1}}>Login?</motion.p></Link>
         </section>
         </motion.div>
     )
