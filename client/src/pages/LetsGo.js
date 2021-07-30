@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 import WideButton from '../components/Tools/WideButton'
 import Person from '../images/Person.svg'
 
@@ -9,7 +10,7 @@ function LetsGo() {
             <p className='title'>Geply</p>
             <img alt='Person Icon' className='person' src={Person}/>
             <WideButton word="Let's Go"/>
-            <p className='lil-gray'>Sign Up?</p>
+            <motion.p className='lil-gray' whileHover={{opacity: 1, scale: 1.1}}>Sign Up?</motion.p>
         </section>
         </>
     )

@@ -1,9 +1,10 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 function WideButton({word}) {
     return (
         <>
-            <button className='wide-button'>{word}</button>
+            <motion.button className='wide-button' whileHover={{scale: 1.08}}>{word}</motion.button>
         </>
     )
 }
