@@ -19,7 +19,7 @@ function Login() {
         <p className='header'>Login</p>
             <form className='signup-form' onSubmit={handleFormSubmit}>
                 <input type='email' placeholder='Email' className='input' required></input>
-                <input type='password' placeholder='Password' className='input'></input>
+                <input minLength='6' type='password' placeholder='Password' className='input'></input>
                 <Button type='submit' word="Login"/>
             </form>
             <Link className='lil-gray' to={'/signup'}><motion.p whileHover={{opacity: 1, scale: 1.1}}>Sign Up?</motion.p></Link>

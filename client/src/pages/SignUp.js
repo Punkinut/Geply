@@ -20,7 +20,7 @@ function SignUp() {
             <form className='signup-form' onSubmit={handleFormSubmit}>
                 <input type='name' placeholder='Username' className='input' required></input>
                 <input type='email' placeholder='Email' className='input' required></input>
-                <input type='password' placeholder='Password' className='input'></input>
+                <input minLength='8' type='password' placeholder='Password' className='input'></input>
                 <Button type='submit' word="Signup"/>
             </form>
             <Link className='lil-gray' to={'/login'}><motion.p whileHover={{opacity: 1, scale: 1.1}}>Login?</motion.p></Link>
