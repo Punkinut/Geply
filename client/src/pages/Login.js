@@ -1,13 +1,13 @@
 import React from 'react'
 
-function SignUp() {
+function Login() {
     return (
         <>
         <section className='login-container'>
-        <p>Sign Up</p>
+            <p>Login</p>
         </section>
         </>
     )
 }
 
-export default SignUp
+export default Login

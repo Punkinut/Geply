@@ -53,4 +53,6 @@
   font-size: 12px;
   opacity: 60%;
   cursor: pointer;
+  color: var(--black);
+  text-decoration: none !important;
 }
