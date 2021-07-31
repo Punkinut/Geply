@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+import Auth from '../utils/auth';
 import Button from '../components/Tools/Button'
 
 function SignUp() {
@@ -9,6 +10,9 @@ function SignUp() {
         event.preventDefault();
         console.log('SIGN UP WORKS')
     }
+    if (Auth.loggedIn()){
+        return <Redirect to='/'/>
+        }
     return (
         <motion.div
         initial={{ opacity: 0}}
