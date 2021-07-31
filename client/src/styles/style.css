@@ -6,6 +6,13 @@
   --orange: #ffb357;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px #fafafa inset !important;
+}
+
 #root {
   font-family: "Inter", sans-serif;
 }
