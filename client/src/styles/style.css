@@ -2,6 +2,7 @@
 :root {
   --blue: #0057ff;
   --black: #303030;
+  --red: #f7736a;
 }
 
 #root {
@@ -44,6 +45,27 @@
   width: 250px;
   border-radius: 10px;
   font-size: 14px;
+  border: 2px solid white;
+}
+
+.red-input {
+  border: none;
+  background-color: #fafafa;
+  padding: 18px;
+  width: 250px;
+  border-radius: 10px;
+  font-size: 14px;
+  border: 2px solid var(--red);
+  animation: view 1s ease;
+}
+
+@keyframes view {
+  0% {
+    border: 2px solid white;
+  }
+  100% {
+    border: 2px solid var(--red);
+  }
 }
 
 .wide-button {

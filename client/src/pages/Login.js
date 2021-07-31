@@ -9,6 +9,7 @@ import Button from '../components/Tools/Button'
 
 function Login() {
     const [formState, setFormState] = useState({ email: '', password: '' });
+    const [formError, setError ] = useState(false)
     const [login] = useMutation(LOGIN);
 
     const handleChange = (event) => {
@@ -24,7 +25,8 @@ function Login() {
             const token = mutationResponse.data.login.token;
             Auth.login(token)
         } catch (err) {
-            console.error(err)
+            setError(true)
+            console.log('Something went wrong...')
         }
     }
     if (Auth.loggedIn()){
@@ -39,8 +41,8 @@ function Login() {
         <section className='login-container'>
             <p className='header'>Login</p>
             <form className='signup-form' onSubmit={handleFormSubmit}>
-                <input name='email' onChange={handleChange} value={formState.email} type='email' placeholder='Email' className='input' required></input>
-                <input name='password' onChange={handleChange} minLength='8' type='password' placeholder='Password' className='input'></input>
+                <input name='email' onChange={handleChange} value={formState.email} type='email' placeholder='Email' className={!formError ? 'input' : 'red-input'} required></input>
+                <input name='password' onChange={handleChange} minLength='8' type='password' placeholder='Password' className={!formError ? 'input' : 'red-input'}></input>
                 <Button type='submit' word="Login"/>
             </form>
             <Link className='lil-gray' to={'/signup'}><motion.p whileHover={{opacity: 1, scale: 1.1}}>Sign Up?</motion.p></Link>
