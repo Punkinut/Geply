@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useMutation } from '@apollo/client';
+import { LOGIN } from '../utils/mutations';
+import Auth from '../utils/auth';
 import Button from '../components/Tools/Button'
 
 function Login() {
     const [formState, setFormState] = useState({ email: '', password: '' });
+    const [login] = useMutation(LOGIN);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -14,7 +17,17 @@ function Login() {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log('LOGIN UP WORKS')
+
+        try {
+            console.log({...formState})
+            // ERROR HERE
+            const mutationResponse = await login({ variables: {email: formState.email, password: formState.password,}})
+            const token = mutationResponse.data.login.token;
+            Auth.login(token)
+        } catch (err) {
+            console.log('NOT WORKING')
+            console.error(err)
+        }
     }
     return (
         <motion.div
