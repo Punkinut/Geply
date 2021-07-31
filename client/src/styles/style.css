@@ -3,6 +3,7 @@
   --blue: #0057ff;
   --black: #303030;
   --red: #f7736a;
+  --orange: #ffb357;
 }
 
 #root {
@@ -55,7 +56,7 @@
   width: 250px;
   border-radius: 10px;
   font-size: 14px;
-  border: 2px solid var(--red);
+  border: 2px solid var(--orange);
   animation: view 1s ease;
 }
 
@@ -64,7 +65,7 @@
     border: 2px solid white;
   }
   100% {
-    border: 2px solid var(--red);
+    border: 2px solid var(--orange);
   }
 }
 
