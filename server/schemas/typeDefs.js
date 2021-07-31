@@ -6,7 +6,6 @@ type User {
     _id: ID!
     email: String!
     username: String!
-    birthday: String!
     online: Boolean
 }
 
@@ -21,7 +20,7 @@ type Query {
 }
 
 type Mutation {
-    signUp(email: String!, username: String!, password: String!, birthday: String!): Auth
+    signUp(email: String!, username: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     online(email: String!): User
     offline(email: String!): User

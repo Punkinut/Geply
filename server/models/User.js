@@ -18,10 +18,6 @@ const userSchema = new Schema(
         type: String,
         required: true,
       },
-      birthday: {
-        type: String,
-        required: true,
-      },
       online: {
         type: Boolean,
         default: false,
