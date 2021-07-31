@@ -8,6 +8,7 @@ import Button from '../components/Tools/Button'
 
 function SignUp() {
     const [formState, setFormState] = useState({username: '', email: '', password: '' });
+    const [formError, setError ] = useState(false)
     const [signup] = useMutation(SIGNUP);
 
     const handleChange = (event) => {
@@ -22,6 +23,7 @@ function SignUp() {
             const token = mutationResponse.data.signUp.token;
             Auth.login(token);
         } catch (err) {
+            setError(true)
             console.log('Something went wrong...')
         }
     }
@@ -37,9 +39,9 @@ function SignUp() {
         <section className='login-container'>
             <p className='header'>Sign Up</p>
             <form className='signup-form' onSubmit={handleFormSubmit}>
-                <input name='username' onChange={handleChange} type='name' placeholder='Username' className='input' required></input>
-                <input name='email' onChange={handleChange} type='email' placeholder='Email' className='input' required></input>
-                <input name='password' onChange={handleChange} minLength='8' type='password' placeholder='Password' className='input'></input>
+                <input name='username' onChange={handleChange} type='name' placeholder='Username' className={!formError ? 'input' : 'red-input'} required></input>
+                <input name='email' onChange={handleChange} type='email' placeholder='Email' className={!formError ? 'input' : 'red-input'} required></input>
+                <input name='password' onChange={handleChange} minLength='8' type='password' placeholder='Password' className={!formError ? 'input' : 'red-input'}></input>
                 <Button type='submit' word="Signup"/>
             </form>
             <Link className='lil-gray' to={'/login'}><motion.p whileHover={{opacity: 1, scale: 1.1}}>Login?</motion.p></Link>
