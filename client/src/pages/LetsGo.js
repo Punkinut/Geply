@@ -3,8 +3,13 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import WideButton from '../components/Tools/WideButton'
 import Person from '../images/Person.svg'
+import  { Redirect } from 'react-router-dom'
+import Auth from '../utils/auth';
 
 function LetsGo() {
+    if (Auth.loggedIn()){
+        return <Redirect to='/'/>
+        }
     return (
         <>
         <section className='login-container'>

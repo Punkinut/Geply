@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
+import  { Redirect } from 'react-router-dom'
 import Button from '../components/Tools/Button'
 
 function Login() {
@@ -26,6 +27,9 @@ function Login() {
             console.error(err)
         }
     }
+    if (Auth.loggedIn()){
+        return <Redirect to='/'/>
+        }
     return (
         <motion.div
         initial={{ opacity: 0}}
