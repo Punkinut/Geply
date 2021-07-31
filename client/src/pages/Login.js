@@ -41,7 +41,7 @@ function Login() {
         <section className='login-container'>
             <p className='header'>Login</p>
             <form className='signup-form' onSubmit={handleFormSubmit}>
-                <input name='email' onChange={handleChange} value={formState.email} type='email' placeholder='Email' className={!formError ? 'input' : 'red-input'} required></input>
+                <input name='email' onChange={handleChange} type='email' placeholder='Email' className={!formError ? 'input' : 'red-input'} required></input>
                 <input name='password' onChange={handleChange} minLength='8' type='password' placeholder='Password' className={!formError ? 'input' : 'red-input'}></input>
                 <Button type='submit' word="Login"/>
             </form>

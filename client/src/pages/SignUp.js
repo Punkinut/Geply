@@ -1,14 +1,29 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { motion } from 'framer-motion'
 import { Link, Redirect } from 'react-router-dom'
+import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
+import { SIGNUP } from '../utils/mutations';
 import Button from '../components/Tools/Button'
 
 function SignUp() {
+    const [formState, setFormState] = useState({username: '', email: '', password: '' });
+    const [signup] = useMutation(SIGNUP);
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormState({...formState, [name]: value });
+      };
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log('SIGN UP WORKS')
+        try {
+            const mutationResponse = await signup({variables: {username: formState.username, email: formState.email, password: formState.password,}})
+            const token = mutationResponse.data.signUp.token;
+            Auth.login(token);
+        } catch (err) {
+            console.log('Something went wrong...')
+        }
     }
     if (Auth.loggedIn()){
         return <Redirect to='/'/>
@@ -22,9 +37,9 @@ function SignUp() {
         <section className='login-container'>
             <p className='header'>Sign Up</p>
             <form className='signup-form' onSubmit={handleFormSubmit}>
-                <input type='name' placeholder='Username' className='input' required></input>
-                <input type='email' placeholder='Email' className='input' required></input>
-                <input minLength='8' type='password' placeholder='Password' className='input'></input>
+                <input name='username' onChange={handleChange} type='name' placeholder='Username' className='input' required></input>
+                <input name='email' onChange={handleChange} type='email' placeholder='Email' className='input' required></input>
+                <input name='password' onChange={handleChange} minLength='8' type='password' placeholder='Password' className='input'></input>
                 <Button type='submit' word="Signup"/>
             </form>
             <Link className='lil-gray' to={'/login'}><motion.p whileHover={{opacity: 1, scale: 1.1}}>Login?</motion.p></Link>
