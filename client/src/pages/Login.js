@@ -19,13 +19,10 @@ function Login() {
         event.preventDefault();
 
         try {
-            console.log({...formState})
-            // ERROR HERE
             const mutationResponse = await login({ variables: {email: formState.email, password: formState.password,}})
             const token = mutationResponse.data.login.token;
             Auth.login(token)
         } catch (err) {
-            console.log('NOT WORKING')
             console.error(err)
         }
     }

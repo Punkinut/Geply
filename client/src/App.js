@@ -7,8 +7,10 @@ import Fade from 'react-reveal/Fade';
 import LetsGo from './pages/LetsGo'
 import SignUp from './pages/SignUp'
 import Login from './pages/Login';
+import Home from './pages/Home';
 import './styles/reset.css'
 import './styles/style.css'
+
 
 const httpLink = createHttpLink({
     uri: '/graphql',
@@ -37,6 +39,7 @@ function App() {
                 <Fade>
                     <AnimatePresence>
                         <Switch>
+                            <Route exact path='/' component={Home} />
                             <Route exact path='/welcome' component={LetsGo} />
                             <Route exact path='/login' component={Login} />
                             <Route exact path='/signup' component={SignUp} />
