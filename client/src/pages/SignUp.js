@@ -37,6 +37,8 @@ function SignUp() {
         exit={{ opacity: 0}}
         >
         <section className='login-container'>
+            <div className='cross-box box-three'></div>
+            <div className='cross-box box-four'></div>
             <p className='header'>Sign Up</p>
             <form className='signup-form' onSubmit={handleFormSubmit}>
                 <input name='username' onChange={handleChange} type='name' placeholder='Username' className={!formError ? 'input' : 'red-input'} required></input>
