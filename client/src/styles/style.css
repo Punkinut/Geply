@@ -13,6 +13,23 @@ input:-webkit-autofill:active {
   box-shadow: 0 0 0 30px #fafafa inset !important;
 }
 
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border: 2px solid var(--blue);
+  animation: focus 500ms ease;
+}
+
+@keyframes focus {
+  0% {
+    border: 2px solid white;
+  }
+  100% {
+    border: 2px solid var(--blue);
+  }
+}
+
 #root {
   font-family: "Inter", sans-serif;
 }
