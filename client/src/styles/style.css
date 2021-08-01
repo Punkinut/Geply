@@ -212,7 +212,7 @@ select:focus {
 
 .icon {
   width: 22px;
-  opacity: 0.4;
+  opacity: 0.25;
 }
 
 .active-icon {
