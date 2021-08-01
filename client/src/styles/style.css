@@ -198,6 +198,10 @@ select:focus {
   opacity: 0.4;
 }
 
+.active-icon {
+  opacity: 0.9 !important;
+}
+
 .icon:focus {
   outline: 0 !important;
   border: 0 none !important;
