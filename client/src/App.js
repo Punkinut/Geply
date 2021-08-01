@@ -3,7 +3,6 @@ import { AnimatePresence } from 'framer-motion'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import Fade from 'react-reveal/Fade';
 import LetsGo from './pages/LetsGo'
 import SignUp from './pages/SignUp'
 import Login from './pages/Login';
@@ -38,7 +37,7 @@ function App() {
             <Router>
                 <>
                 <AnimatePresence>
-                <Fade>
+                  <>
                         <MobileNav/>
                         <Switch>
                             <Route exact path='/' component={Home} />
@@ -46,7 +45,7 @@ function App() {
                             <Route exact path='/login' component={Login} />
                             <Route exact path='/signup' component={SignUp} />
                         </Switch> 
-                </Fade>
+                  </>
                 </AnimatePresence>
                 </>
             </Router>

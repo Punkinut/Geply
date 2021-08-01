@@ -7,6 +7,10 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion';
 
 function MobileNav() {
+
+    const changeColor = () => {
+        console.log('Hello')
+    }
    
 
     if (Auth.loggedIn()) {
@@ -19,7 +23,7 @@ function MobileNav() {
             >
                 <section className='mobile-nav'>
                     <Link to={'/friends'}><img className='icon' alt='Compass Icon' src={Compass}/></Link>
-                    <Link to={'/'}><img className='icon' alt='Message Icon' src={Message}/></Link>
+                    <Link to={'/'}><img className='icon' alt='Message Icon' src={Message} onClick={changeColor}/></Link>
                     <Link to={'/profile'}><img className='icon user' alt='User Icon' src={User}/></Link>
                 </section>
             </motion.div>
