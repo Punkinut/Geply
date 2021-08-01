@@ -13,7 +13,9 @@ function Friends() {
         animate={{ opacity: 1}}
         exit={{ opacity: 0}}
         >
-            <p>Friends</p>
+            <section className='page-container'>
+                <p>Friends</p>
+            </section>
         </motion.div>
     )
 }

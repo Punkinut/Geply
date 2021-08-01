@@ -194,12 +194,19 @@ select:focus {
 }
 
 .desktop-nav {
+  position: fixed;
+  top: 0;
   height: 60px;
   width: 100%;
+  background-color: white;
   border-bottom: 1px solid #ebe9e9;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+
+.page-container {
+  margin-top: 60px;
 }
 
 .desktop-icon {
@@ -234,6 +241,9 @@ select:focus {
 }
 
 @media screen and (max-width: 400px) {
+  .page-container {
+    margin-top: 0px;
+  }
   .desktop-nav {
     display: none;
   }

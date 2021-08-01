@@ -13,7 +13,9 @@ function Profile() {
         animate={{ opacity: 1}}
         exit={{ opacity: 0}}
         >
-            <p>Profile</p>
+            <section className='page-container'>
+                <p>Home</p>
+            </section>
         </motion.div>
     )
 }
