@@ -209,6 +209,11 @@ select:focus {
   margin-top: 60px;
 }
 
+.logo {
+  position: absolute;
+  left: 5%;
+}
+
 .desktop-icon {
   margin: 0px 20px;
 }
