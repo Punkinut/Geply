@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import './styles/reset.css'
 import './styles/style.css'
+import MobileNav from './components/Nav/MobileNav';
 
 
 const httpLink = createHttpLink({
@@ -36,17 +37,17 @@ function App() {
         <ApolloProvider client={client}>
             <Router>
                 <>
+                <AnimatePresence>
                 <Fade>
-                    <AnimatePresence>
+                        <MobileNav/>
                         <Switch>
                             <Route exact path='/' component={Home} />
                             <Route exact path='/welcome' component={LetsGo} />
                             <Route exact path='/login' component={Login} />
                             <Route exact path='/signup' component={SignUp} />
                         </Switch> 
-                    </AnimatePresence>
-                
                 </Fade>
+                </AnimatePresence>
                 </>
             </Router>
         </ApolloProvider>
