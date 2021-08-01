@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import './styles/reset.css'
 import './styles/style.css'
 import MobileNav from './components/Nav/MobileNav';
+import DesktopNav from './components/Nav/DesktopNav';
 
 
 const httpLink = createHttpLink({
@@ -37,7 +38,8 @@ function App() {
             <Router>
                 <>
                 <AnimatePresence>
-                  <>
+                  <>    
+                        <DesktopNav/>
                         <MobileNav/>
                         <Switch>
                             <Route exact path='/' component={Home} />
