@@ -11,6 +11,8 @@ import './styles/reset.css'
 import './styles/style.css'
 import MobileNav from './components/Nav/MobileNav';
 import DesktopNav from './components/Nav/DesktopNav';
+import Friends from './pages/Friends';
+import Profile from './pages/Profile';
 
 
 const httpLink = createHttpLink({
@@ -43,6 +45,8 @@ function App() {
                         <MobileNav/>
                         <Switch>
                             <Route exact path='/' component={Home} />
+                            <Route exact path='/friends' component={Friends} />
+                            <Route exact path='/profile' component={Profile} />
                             <Route exact path='/welcome' component={LetsGo} />
                             <Route exact path='/login' component={Login} />
                             <Route exact path='/signup' component={SignUp} />
