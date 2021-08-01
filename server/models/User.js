@@ -21,6 +21,9 @@ const userSchema = new Schema(
       online: {
         type: Boolean,
         default: false,
+      },
+      bio : {
+        type: String,
       }
     },
   );
