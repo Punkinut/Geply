@@ -13,6 +13,7 @@ import MobileNav from './components/Nav/MobileNav';
 import DesktopNav from './components/Nav/DesktopNav';
 import Friends from './pages/Friends';
 import Profile from './pages/Profile';
+import EditProfile from './pages/EditProfile';
 
 
 const httpLink = createHttpLink({
@@ -47,6 +48,7 @@ function App() {
                             <Route exact path='/' component={Home} />
                             <Route exact path='/friends' component={Friends} />
                             <Route exact path='/profile' component={Profile} />
+                            <Route exact path='/edit' component={EditProfile} />
                             <Route exact path='/welcome' component={LetsGo} />
                             <Route exact path='/login' component={Login} />
                             <Route exact path='/signup' component={SignUp} />
