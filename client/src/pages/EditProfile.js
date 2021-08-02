@@ -27,6 +27,7 @@ function EditProfile() {
                             <p className='light-text sub'>About You</p>
                         </motion.div>
                         <motion.div whileHover={{scale: 0.9}} whileTap={{scale: 1}} className='choice'>
+                            <input id='fileid' className='upload-file' type='file'/>
                             <img className='icon edit-icon' src={Upload} alt='Upload Icon'/>
                             <p>Icon</p>
                             <p className='light-text sub'>Upload</p>
