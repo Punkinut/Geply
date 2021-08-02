@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import React from 'react'
-import  { Redirect } from 'react-router-dom'
+import  { Redirect, Link } from 'react-router-dom'
 import { GET_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
@@ -35,7 +35,7 @@ function Profile() {
                     <p className='friends'>No Friends</p>
                     <p className='bio'>{data.me.bio}</p>
                     <motion.div className='button-container'>
-                        <WideButton word="Edit Profile"/>
+                        <Link to='/edit'><WideButton word="Edit Profile"/></Link>
                         <GrayButton word="Friends"/>
                     </motion.div>
                 </section>
