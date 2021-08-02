@@ -24,7 +24,7 @@ const userSchema = new Schema(
       },
       bio : {
         type: String,
-        default: ''
+        default: 'No bio yet '
       },
       propic : {
         type: String,
