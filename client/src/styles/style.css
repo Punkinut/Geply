@@ -313,6 +313,14 @@ select:focus {
   row-gap: 20px;
 }
 
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  scale: 1.3;
+}
+
 @media screen and (max-width: 400px) {
   .page-container {
     margin-top: 0px;

@@ -6,6 +6,7 @@ import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
 import WideButton from '../components/Tools/WideButton';
 import GrayButton from '../components/Tools/GrayButton';
+import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 
 function Profile() {
     // const [userData, setUserData] = useState({});
@@ -21,7 +22,9 @@ function Profile() {
         >
             <section className='page-container'>
                 {loading ? (
-                <p>Loading</p>
+                <section className='loading-container'>
+                    <ThreeDotsWave/>
+                </section>
                 ) : (
                 <section className='profile-container'>
                     <div className='sub-pic'>
