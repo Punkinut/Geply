@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
 import React from 'react'
-import  { Redirect } from 'react-router-dom'
+import  { Link, Redirect } from 'react-router-dom'
 import Auth from '../utils/auth';
 import Tag from '../images/price-tag.svg'
 import Upload from '../images/upload.svg'
+import Arrow from '../images/left-arrow.svg'
 
 function EditProfile() {
     if (!Auth.loggedIn()){
@@ -17,6 +18,7 @@ function EditProfile() {
         >
             <section className='page-container'>
                 <section className='edit-container'>
+                    <Link to='/profile'><img className='icon left-arrow' src={Arrow} alt='Arrow Icon'/></Link>
                     <p className='username account-header'>Account</p>
                     <section className='choice-container'>
                         <motion.div whileHover={{scale: 0.9}} whileTap={{scale: 1}} className='choice'>
