@@ -29,3 +29,21 @@ export const SIGNUP = gql`
     }
   }
 `;
+
+export const OFFLINE = gql`
+  mutation offline {
+    offline {
+      username
+      online
+    }
+  }
+`;
+
+export const ONLINE = gql`
+  mutation online {
+    online {
+      username
+      online
+    }
+  }
+`;
