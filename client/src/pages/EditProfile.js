@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import React from 'react'
 import  { Redirect } from 'react-router-dom'
 import Auth from '../utils/auth';
+import Tag from '../images/price-tag.svg'
+import Upload from '../images/upload.svg'
 
 function EditProfile() {
     if (!Auth.loggedIn()){
@@ -18,10 +20,14 @@ function EditProfile() {
                     <p className='username account-header'>Account</p>
                     <section className='choice-container'>
                         <motion.div whileHover={{scale: 0.9}} whileTap={{scale: 1}} className='choice'>
-
+                            <img className='icon edit-icon' src={Tag} alt='Bio Icon'/>
+                            <p>Bio</p>
+                            <p className='light-text sub'>About You</p>
                         </motion.div>
                         <motion.div whileHover={{scale: 0.9}} whileTap={{scale: 1}} className='choice'>
-
+                            <img className='icon edit-icon' src={Upload} alt='Upload Icon'/>
+                            <p>Icon</p>
+                            <p className='light-text sub'>Upload</p>
                         </motion.div>
                     </section>
                     <motion.section whileHover={{scale: 0.9}} whileTap={{scale: 1}} onClick={Auth.logout} className='logout'>
