@@ -27,17 +27,17 @@ function Profile() {
                 </section>
                 ) : (
                 <section className='profile-container'>
-                    <div className='sub-pic'>
+                    <motion.div initial={{ scale: 0 }} animate={{ scale: 1}} className='sub-pic'>
                         <p>{data.me.username[0]}</p>
                         <div className='online'></div>
-                    </div>
+                    </motion.div>
                     <p className='username'>{data.me.username}</p>
                     <p className='friends'>No Friends</p>
                     <p className='bio'>{data.me.bio}</p>
-                    <div className='button-container'>
+                    <motion.div className='button-container'>
                         <WideButton word="Edit Profile"/>
-                        <GrayButton word="Messages"/>
-                    </div>
+                        <GrayButton word="Friends"/>
+                    </motion.div>
                 </section>
                 )}
                 
