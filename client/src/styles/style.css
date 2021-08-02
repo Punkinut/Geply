@@ -5,6 +5,7 @@
   --red: #f7736a;
   --orange: #ffb357;
   --gray: #fafafa;
+  --blue-gray: #f5f5f8;
 }
 
 input:-webkit-autofill,
@@ -143,6 +144,17 @@ select:focus {
   cursor: pointer;
 }
 
+.gray-button {
+  border: none;
+  background-color: #f5f5f8;
+  color: var(--black);
+  font-size: 14px;
+  padding: 15px;
+  border-radius: 8px;
+  width: 160px;
+  cursor: pointer;
+}
+
 .small-button {
   border: none;
   background-color: var(--blue);
@@ -243,6 +255,62 @@ select:focus {
 
 .user {
   width: 20px !important;
+}
+
+.sub-pic {
+  font-size: 50px;
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b8b8ba;
+  position: relative;
+  margin-top: 100px;
+  background-color: var(--blue-gray);
+}
+
+.online {
+  position: absolute;
+  border: 11px solid white;
+  width: 50px;
+  height: 50px;
+  bottom: 0px;
+  right: 0px;
+  background-color: var(--blue);
+  border-radius: 50px;
+}
+
+.profile-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.username {
+  margin-top: 20px;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.friends {
+  margin-top: 10px;
+}
+
+.bio {
+  font-size: 14px;
+  opacity: 0.7;
+  margin-top: 13px;
+  margin-bottom: 50px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
 }
 
 @media screen and (max-width: 400px) {

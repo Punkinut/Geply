@@ -1,9 +1,15 @@
 import { motion } from 'framer-motion';
 import React from 'react'
 import  { Redirect } from 'react-router-dom'
+import { GET_ME } from '../utils/queries';
 import Auth from '../utils/auth';
+import { useQuery } from '@apollo/client';
+import WideButton from '../components/Tools/WideButton';
+import GrayButton from '../components/Tools/GrayButton';
 
 function Profile() {
+    // const [userData, setUserData] = useState({});
+    const { data, loading } = useQuery(GET_ME);
     if (!Auth.loggedIn()){
     return <Redirect to='/welcome'/>
     }
@@ -14,7 +20,24 @@ function Profile() {
         exit={{ opacity: 0}}
         >
             <section className='page-container'>
-                <p>Home</p>
+                {loading ? (
+                <p>Loading</p>
+                ) : (
+                <section className='profile-container'>
+                    <div className='sub-pic'>
+                        <p>{data.me.username[0]}</p>
+                        <div className='online'></div>
+                    </div>
+                    <p className='username'>{data.me.username}</p>
+                    <p className='friends'>No Friends</p>
+                    <p className='bio'>{data.me.bio}</p>
+                    <div className='button-container'>
+                        <WideButton word="Edit Profile"/>
+                        <GrayButton word="Messages"/>
+                    </div>
+                </section>
+                )}
+                
             </section>
         </motion.div>
     )
