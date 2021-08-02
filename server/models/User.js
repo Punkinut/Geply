@@ -24,6 +24,11 @@ const userSchema = new Schema(
       },
       bio : {
         type: String,
+        default: ''
+      },
+      propic : {
+        type: String,
+        default: '#'
       }
     },
   );

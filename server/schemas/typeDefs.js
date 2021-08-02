@@ -8,6 +8,7 @@ type User {
     username: String!
     online: Boolean
     bio: String
+    propic: String
 }
 
 type Auth {
@@ -21,7 +22,7 @@ type Query {
 }
 
 type Mutation {
-    signUp(email: String!, username: String!, password: String!, bio: String): Auth
+    signUp(email: String!, username: String!, password: String!, bio: String, propic: String): Auth
     login(email: String!, password: String!): Auth
     online: User
     offline: User
