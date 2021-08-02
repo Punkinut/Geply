@@ -28,7 +28,7 @@ function Profile() {
                 ) : (
                 <section className='profile-container'>
                     <motion.div initial={{ scale: 0 }} animate={{ scale: 1}} className='sub-pic'>
-                        <p>{data.me.username[0]}</p>
+                        <p>{data.me.username[0].toUpperCase()}</p>
                         <div className='online'></div>
                     </motion.div>
                     <p className='username'>{data.me.username}</p>

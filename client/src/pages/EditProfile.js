@@ -14,7 +14,20 @@ function EditProfile() {
         exit={{ opacity: 0}}
         >
             <section className='page-container'>
-                <p>Edit Profile</p>
+                <section className='edit-container'>
+                    <p className='username account-header'>Account</p>
+                    <section className='choice-container'>
+                        <motion.div whileHover={{scale: 0.9}} whileTap={{scale: 1}} className='choice'>
+
+                        </motion.div>
+                        <motion.div whileHover={{scale: 0.9}} whileTap={{scale: 1}} className='choice'>
+
+                        </motion.div>
+                    </section>
+                    <motion.section whileHover={{scale: 0.9}} whileTap={{scale: 1}} onClick={Auth.logout} className='logout'>
+                        <p>Log Out</p>
+                    </motion.section>
+                </section>
             </section>
         </motion.div>
     )
