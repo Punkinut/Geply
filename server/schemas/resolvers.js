@@ -1,6 +1,9 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
 const { signToken } = require('../utils/auth');
+const aws = require('aws-sdk')
+
+const s3Bucket = 'geply-bucket';
 
 const resolvers = {
     Query: {
@@ -15,6 +18,31 @@ const resolvers = {
         }
       },
     Mutation: {
+        signS3: async (parent, { filename, filetype, }) => {
+          const s3 = new aws.S3({
+            signatureVersion: 'v4',
+            region: 'ap-southeast-2',
+            accessKeyId: 'AKIAUFEJRPNLBYRLDX4C',
+            secretAccessKey: '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'
+          });
+
+          const s3Params = {
+            Bucket: s3Bucket,
+            Key: filename,
+            Expires: 60,
+            ContentType: filetype,
+            ACL: 'public-read'
+          }
+
+          const signedRequest = await s3.getSignedUrl('putObject', s3Params);
+          console.log(signedRequest)
+          const url = `https://${s3Bucket}.s3.amazonaws.com/${filename}`
+
+          return {
+            signedRequest,
+            url
+          };
+        },
         signUp: async (parent, { email, username, password, online, bio, propic }) => {
             const user = await User.create({ email, username, password, online, bio, propic });
             const token = signToken(user)
@@ -46,6 +74,9 @@ const resolvers = {
           },
           offline: async (_, { email }, context) => {
             return User.findOneAndUpdate({ _id: context.user._id }, { online: false }, {new: true});
+          },
+          updateIcon: async (_, { url }, context) => {
+            return User.findOneAndUpdate({ _id: context.user._id }, {propic: url});
           }
     },
 };

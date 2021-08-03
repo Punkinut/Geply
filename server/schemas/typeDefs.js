@@ -11,6 +11,11 @@ type User {
     propic: String
 }
 
+type S3Payload {
+    signedRequest: String!,
+    url: String!,
+}
+
 type Auth {
     token: ID!
     user: User
@@ -22,10 +27,12 @@ type Query {
 }
 
 type Mutation {
+    signS3(filename: String!, filetype: String!): S3Payload!
     signUp(email: String!, username: String!, password: String!, bio: String, propic: String): Auth
     login(email: String!, password: String!): Auth
     online: User
     offline: User
+    updateIcon(url: String!): User
 }
 
 `;

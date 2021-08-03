@@ -47,3 +47,20 @@ export const ONLINE = gql`
     }
   }
 `;
+
+export const s3SignMutation = gql`
+  mutation($filename: String!, $filetype: String!) {
+    signS3(filename: $filename, filetype: $filetype) {
+      url
+      signedRequest
+    }
+  }
+`;
+
+export const updateIcon = gql `
+  mutation updateIcon ($url: String!) {
+    updateIcon(url: $url) {
+      username
+    }
+  }
+`;

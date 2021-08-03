@@ -5,26 +5,35 @@ import Auth from '../utils/auth';
 import Tag from '../images/price-tag.svg'
 import Upload from '../images/upload.svg'
 import Arrow from '../images/left-arrow.svg'
+import axios from "axios";
+import { useMutation } from '@apollo/client';
+import { s3SignMutation, updateIcon } from '../utils/mutations';
 
 function EditProfile() {
-
-    const toBase64 = file => new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-    });
-
+    const [s3Sign] = useMutation(s3SignMutation);
+    const [iconUpdate] = useMutation(updateIcon);
+    const uploadToS3 = async (file, signedRequest) => {
+        const options = {
+          headers: {
+            "Content-Type": file.type,
+          }
+        };
+        await axios.put(signedRequest, file, options);
+      };
 
     const getFile = async (e) => {
         const file = e.target.files[0]
-        console.log(file)
-        if (file.type === 'image/png' || file.type === 'image/jpeg') {
-            const base64 = await toBase64(file);
-            console.log(base64)
-        } else {
-            console.log('File Not Supported')
-        }
+        const response = await s3Sign({
+            variables: {
+                filename: file.name,
+                filetype: file.type
+            }
+        });
+
+        const { signedRequest, url } = response.data.signS3;
+        await uploadToS3(file, signedRequest);
+
+        await iconUpdate({ variables: {url}});
     }
     
     if (!Auth.loggedIn()){
