@@ -15,6 +15,11 @@ input:-webkit-autofill:active {
   box-shadow: 0 0 0 30px #fafafa inset !important;
 }
 
+.link {
+  text-decoration: none;
+  color: var(--black);
+}
+
 * {
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: none;

@@ -56,11 +56,14 @@ function EditProfile() {
                     <Link to='/profile'><img className='icon left-arrow' src={Arrow} alt='Arrow Icon'/></Link>
                     <p className='username account-header'>Account</p>
                     <section className='choice-container'>
-                        <motion.div whileHover={{scale: 0.9}} whileTap={{scale: 1}} className='choice'>
-                            <img className='icon edit-icon' src={Tag} alt='Bio Icon'/>
-                            <p>Bio</p>
-                            <p className='light-text sub'>About You</p>
-                        </motion.div>
+                        <Link to='/bio' className='link'>
+                            <motion.div whileHover={{scale: 0.9}} whileTap={{scale: 1}} className='choice'>
+                                <img className='icon edit-icon' src={Tag} alt='Bio Icon'/>
+                                <p>Bio</p>
+                                <p className='light-text sub'>About You</p>
+                            </motion.div>
+                        </Link>
+                        
                         <motion.div whileHover={{scale: 0.9}} whileTap={{scale: 1}} className='choice'>
                             <input id='fileid' className='upload-file' type='file' accept="image/png, image/jpeg" onChange={getFile}/>
                             <img className='icon edit-icon' src={Upload} alt='Upload Icon'/>

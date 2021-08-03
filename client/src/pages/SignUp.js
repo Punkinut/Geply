@@ -41,7 +41,7 @@ function SignUp() {
             <div className='cross-box box-four'></div>
             <p className='header'>Sign Up</p>
             <form className='signup-form' onSubmit={handleFormSubmit}>
-                <input name='username' onChange={handleChange} type='name' placeholder='Username' className={!formError ? 'input' : 'red-input'} required></input>
+                <input name='username' onChange={handleChange} type='name' placeholder='Full Name' className={!formError ? 'input' : 'red-input'} maxLength='25' required></input>
                 <input name='email' onChange={handleChange} type='email' placeholder='Email' className={!formError ? 'input' : 'red-input'} required></input>
                 <input name='password' onChange={handleChange} minLength='8' type='password' placeholder='Password' className={!formError ? 'input' : 'red-input'}></input>
                 <Button type='submit' word="Signup"/>

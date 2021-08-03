@@ -26,7 +26,7 @@ function Profile() {
                 </section>
                 ) : (
                 <section className='profile-container'>
-                    <motion.div initial={{ scale: 0 }} animate={{ scale: 1}} className='sub-pic'>
+                    <motion.div initial={{ scale: 0.5 }} animate={{ scale: 1}} className='sub-pic'>
                         {data.me.propic === '#' ? (
                             <p>{data.me.username[0].toUpperCase()}</p>
                         ) : (
