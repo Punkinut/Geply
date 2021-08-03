@@ -33,11 +33,7 @@ function EditProfile() {
 
         const { signedRequest, url } = response.data.signS3;
         await uploadToS3(file, signedRequest);
-        // setProfilePic(url);
-        // console.log(`This is the new state ${profilePic}`)
-        // console.log(url)
         await iconUpdate({ variables: {url}});
-        // history.go(0)
     }
     
     if (!Auth.loggedIn()){
