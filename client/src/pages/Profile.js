@@ -9,7 +9,6 @@ import GrayButton from '../components/Tools/GrayButton';
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 
 function Profile() {
-    // const [userData, setUserData] = useState({});
     const { data, loading } = useQuery(GET_ME);
     if (!Auth.loggedIn()){
     return <Redirect to='/welcome'/>
