@@ -60,7 +60,9 @@ export const s3SignMutation = gql`
 export const updateIcon = gql `
   mutation updateIcon ($url: String!) {
     updateIcon(url: $url) {
+      _id
       username
+      propic
     }
   }
 `;

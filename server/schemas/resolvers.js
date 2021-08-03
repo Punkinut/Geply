@@ -36,7 +36,6 @@ const resolvers = {
           }
 
           const signedRequest = await s3.getSignedUrl('putObject', s3Params);
-          console.log(signedRequest)
           const url = `https://${s3Bucket}.s3.amazonaws.com/${filename}`
 
           return {
@@ -77,7 +76,7 @@ const resolvers = {
             return User.findOneAndUpdate({ _id: context.user._id }, { online: false }, {new: true});
           },
           updateIcon: async (_, { url }, context) => {
-            return User.findOneAndUpdate({ _id: context.user._id }, {propic: url});
+            return User.findOneAndUpdate({ _id: context.user._id }, {propic: url}, {new: true});
           }
     },
 };

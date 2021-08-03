@@ -10,6 +10,7 @@ import { useMutation } from '@apollo/client';
 import { s3SignMutation, updateIcon } from '../utils/mutations';
 
 function EditProfile() {
+
     const [s3Sign] = useMutation(s3SignMutation);
     const [iconUpdate] = useMutation(updateIcon);
     const uploadToS3 = async (file, signedRequest) => {
@@ -32,8 +33,11 @@ function EditProfile() {
 
         const { signedRequest, url } = response.data.signS3;
         await uploadToS3(file, signedRequest);
-
+        // setProfilePic(url);
+        // console.log(`This is the new state ${profilePic}`)
+        // console.log(url)
         await iconUpdate({ variables: {url}});
+        // history.go(0)
     }
     
     if (!Auth.loggedIn()){
