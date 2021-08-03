@@ -2,6 +2,7 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
 const { signToken } = require('../utils/auth');
 const aws = require('aws-sdk')
+require('dotenv').config()
 
 const s3Bucket = 'geply-bucket';
 
@@ -22,8 +23,8 @@ const resolvers = {
           const s3 = new aws.S3({
             signatureVersion: 'v4',
             region: 'ap-southeast-2',
-            accessKeyId: 'AKIAUFEJRPNLBYRLDX4C',
-            secretAccessKey: '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'
+            accessKeyId: process.env.ACCESS,
+            secretAccessKey: process.env.SECRET
           });
 
           const s3Params = {
