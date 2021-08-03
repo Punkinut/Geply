@@ -7,12 +7,13 @@ import Upload from '../images/upload.svg'
 import Arrow from '../images/left-arrow.svg'
 import axios from "axios";
 import { useMutation } from '@apollo/client';
-import { s3SignMutation, updateIcon } from '../utils/mutations';
+import { OFFLINE, s3SignMutation, updateIcon } from '../utils/mutations';
 
 function EditProfile() {
 
     const [s3Sign] = useMutation(s3SignMutation);
     const [iconUpdate] = useMutation(updateIcon);
+    const [sendOffline] = useMutation(OFFLINE);
     const uploadToS3 = async (file, signedRequest) => {
         const options = {
           headers: {
@@ -35,6 +36,11 @@ function EditProfile() {
         await uploadToS3(file, signedRequest);
         await iconUpdate({ variables: {url}});
     }
+
+    const logoutUser = async () => {
+        await sendOffline();
+        Auth.logout();
+    };
     
     if (!Auth.loggedIn()){
     return <Redirect to='/welcome'/>
@@ -62,7 +68,7 @@ function EditProfile() {
                             <p className='light-text sub'>Upload</p>
                         </motion.div>
                     </section>
-                    <motion.section whileHover={{scale: 0.9}} whileTap={{scale: 1}} onClick={Auth.logout} className='logout'>
+                    <motion.section whileHover={{scale: 0.9}} whileTap={{scale: 1}} onClick={logoutUser} className='logout'>
                         <p>Log Out</p>
                     </motion.section>
                 </section>
