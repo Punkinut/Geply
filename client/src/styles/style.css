@@ -346,6 +346,7 @@ select:focus {
 
 .logout {
   background-color: white;
+  border: none;
   width: 300px;
   display: flex;
   align-items: center;
@@ -372,6 +373,25 @@ select:focus {
   opacity: 0.7;
   margin-top: 13px;
   margin-bottom: 50px;
+}
+
+.bio-input {
+  border: none !important;
+  padding: 25px;
+  border-radius: 30px;
+  resize: none;
+  margin-top: 40px;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  height: 150px;
+}
+
+.bio-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .image-container {
@@ -444,6 +464,10 @@ select:focus {
   }
   .mobile-nav {
     display: flex;
+  }
+
+  .bio-input {
+    width: 100%;
   }
 }
 
