@@ -66,3 +66,13 @@ export const updateIcon = gql `
     }
   }
 `;
+
+export const updateBio = gql `
+  mutation updateBio ($bio: String!) {
+    updateBio(bio: $bio) {
+      _id
+      username
+      bio
+    }
+  }
+`;

@@ -77,6 +77,9 @@ const resolvers = {
           },
           updateIcon: async (_, { url }, context) => {
             return User.findOneAndUpdate({ _id: context.user._id }, {propic: url}, {new: true});
+          },
+          updateBio: async (_, { bio }, context) => {
+            return User.findOneAndUpdate({ _id: context.user._id }, {bio: bio}, {new: true});
           }
     },
 };

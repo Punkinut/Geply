@@ -33,6 +33,7 @@ type Mutation {
     online: User
     offline: User
     updateIcon(url: String!): User
+    updateBio(bio: String!): User
 }
 
 `;
