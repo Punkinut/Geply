@@ -6,10 +6,12 @@ import Tag from '../images/price-tag.svg'
 import Upload from '../images/upload.svg'
 import Arrow from '../images/left-arrow.svg'
 import axios from "axios";
+import { useHistory } from 'react-router';
 import { useMutation } from '@apollo/client';
 import { OFFLINE, s3SignMutation, updateIcon } from '../utils/mutations';
 
 function EditProfile() {
+    const history = useHistory();
 
     const [s3Sign] = useMutation(s3SignMutation);
     const [iconUpdate] = useMutation(updateIcon);
@@ -35,6 +37,7 @@ function EditProfile() {
         const { signedRequest, url } = response.data.signS3;
         await uploadToS3(file, signedRequest);
         await iconUpdate({ variables: {url}});
+        history.replace('/profile')
     }
 
     const logoutUser = async () => {
