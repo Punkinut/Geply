@@ -298,6 +298,7 @@ select:focus {
   z-index: 1;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 100px;
 }
 
 .edit-container {
@@ -525,6 +526,7 @@ select:focus {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding-bottom: 100px;
 }
 
 .profile-card {
