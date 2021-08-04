@@ -537,11 +537,17 @@ select:focus {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  text-decoration: none;
+  color: var(--black);
   transition: all 200ms ease;
 }
 
 .profile-card:hover {
   background-color: var(--gray);
+}
+
+.profile-card:active {
+  background-color: var(--blue-gray);
 }
 
 @media screen and (max-width: 350px) {

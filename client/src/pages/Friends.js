@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import React, { useState } from 'react'
-import  { Redirect } from 'react-router-dom'
+import  { Link, Redirect } from 'react-router-dom'
 import { useQuery } from '@apollo/client';
 import Auth from '../utils/auth';
 import { SEARCH_USERS } from '../utils/queries';
@@ -37,7 +37,7 @@ function Friends() {
                         </section>
                     ) : (
                         data?.searchUsers?.map((user) => (
-                            <motion.section className='profile-card' key={user._id}>
+                            <Link to={`profile/${user._id}`} className='profile-card' key={user._id}>
                                 <section className='image-container small-image-container'>
                                     {user.propic === '#' ? (
                                         <p>{user.username[0].toUpperCase()}</p>
@@ -51,7 +51,7 @@ function Friends() {
                                     <p className='light-text'>No Friends</p>
                                 </section>
                                 <button></button>
-                            </motion.section>
+                            </Link>
                         ))
                     )}
                 </section>
