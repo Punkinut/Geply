@@ -14,7 +14,12 @@ function Friends() {
         exit={{ opacity: 0}}
         >
             <section className='page-container'>
-                <p>Friends</p>
+                <section className='explore-container'>
+                    <p className='username account-header explore-header'>Explore</p>
+                    <div className='search-container'>
+                        <input placeholder='Find Friends' className='search-bar'/>
+                    </div>
+                </section>
             </section>
         </motion.div>
     )

@@ -475,7 +475,39 @@ select:focus {
   }
 }
 
+.explore-header {
+  width: 200px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+.search-bar {
+  width: 300px;
+  border: 2px solid white;
+  background-color: var(--gray);
+  padding: 20px;
+  border-radius: 17px;
+  text-align: center;
+  font-size: 14px;
+  position: relative;
+}
+
+.search-container {
+  position: relative;
+}
+
+.explore-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 @media screen and (max-width: 350px) {
+  .search-bar {
+    width: 90%;
+  }
   .choice {
     background-color: white;
     height: 130px;
