@@ -432,7 +432,7 @@ select:focus {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 35px;
+  height: 37px;
   width: 130px;
 }
 
