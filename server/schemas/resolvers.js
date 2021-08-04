@@ -16,6 +16,9 @@ const resolvers = {
         },
         allUsers: async () => {
           return User.find()
+        },
+        searchUsers: async (_, { username }) => {
+          return User.find({ username: {$regex: username, $options: 'i'} })
         }
       },
     Mutation: {

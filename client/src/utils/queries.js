@@ -11,3 +11,14 @@ export const GET_ME = gql`
         }
     }
 `;
+
+export const SEARCH_USERS = gql `
+    query searchUsers ($username: String!) {
+      searchUsers(username: $username) {
+        _id
+        username
+        online
+        propic
+      }
+    }
+`;

@@ -24,6 +24,7 @@ type Auth {
 type Query {
     me: User
     allUsers: [User]
+    searchUsers(username: String!): [User]
 }
 
 type Mutation {

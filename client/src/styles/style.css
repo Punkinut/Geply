@@ -408,8 +408,31 @@ select:focus {
   overflow: hidden;
 }
 
+.small-image-container {
+  width: 70px !important;
+  height: 70px !important;
+  background-color: var(--blue-gray);
+  color: #3030309d;
+}
+
+.profile-search-load-container {
+  margin-top: 40px;
+}
+
 .official-pic {
   width: 150px;
+}
+
+.small-pic {
+  width: 70px;
+}
+
+.user-titles {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 35px;
+  width: 130px;
 }
 
 .light-text {
@@ -502,6 +525,23 @@ select:focus {
   flex-direction: column;
   align-items: center;
   width: 100%;
+}
+
+.profile-card {
+  width: 300px;
+  margin-top: 30px;
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.profile-card:hover {
+  background-color: var(--gray);
 }
 
 @media screen and (max-width: 350px) {
