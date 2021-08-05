@@ -41,7 +41,7 @@ function User() {
                                 <img className='official-pic' alt='Pro Pic' src={profile.propic}/>
                             </section>
                         )}
-                        <div className='online'></div>
+                        <div className={profile.online ? 'online': 'offline'}></div>
                     </motion.div>
                     <p className='username'>{profile.username}</p>
                     <p className='friends'>No Friends</p>
