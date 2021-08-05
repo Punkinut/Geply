@@ -40,7 +40,8 @@ const loadingCircleVariants = {
 
 const loadingCircleTransition = {
     duration: 0.4,
-    yoyo: Infinity,
+    repeat: Infinity,
+    repeatType: 'reverse',
     ease: 'easeInOut'
 };
 
