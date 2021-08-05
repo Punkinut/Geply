@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
 import React, { useState } from 'react'
 import  { Link, Redirect } from 'react-router-dom'
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import Auth from '../utils/auth';
 import { GET_ME, SEARCH_USERS } from '../utils/queries';
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
+import { addFollowing, removeFollowing } from '../utils/mutations';
 
 function Friends() {
 
@@ -13,6 +14,23 @@ function Friends() {
     const { data, loading } = useQuery(SEARCH_USERS, { variables: {username: search}});
     const { data: dataB } = useQuery(GET_ME);
     const yourID = dataB?.me?._id || {};
+
+    const [follow] = useMutation(addFollowing);
+    const [unfollow] = useMutation(removeFollowing);
+
+    const plusFollow = async (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        const id = e.target.id
+        await follow({ variables: {id}})
+    };
+
+    const minusFollow = async (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        const id = e.target.id
+        await unfollow({ variables: {id}})
+    };
 
     const handleChange = (e) => {
         const { value } = e.target;
@@ -62,9 +80,9 @@ function Friends() {
                                     
                                 </section>
                                 {user?.followers?.some(user => user._id === yourID) ? (
-                                    <button className='added-button'>Added</button>
+                                    <button onClick={minusFollow} id={user._id} className='added-button'>Added</button>
                                 ) : (
-                                    <button className='follow-button'>Follow</button>
+                                    <button onClick={plusFollow} id={user._id} className='follow-button'>Follow</button>
                                 )}
                             </Link>  
                             )

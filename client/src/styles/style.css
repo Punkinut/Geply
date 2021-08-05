@@ -579,6 +579,7 @@ select:focus {
   color: white;
   border-radius: 7px;
   width: 70px;
+  cursor: pointer;
 }
 
 .added-button {
@@ -589,6 +590,7 @@ select:focus {
   color: #3030309d;
   border-radius: 7px;
   width: 70px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 350px) {
