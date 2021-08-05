@@ -37,11 +37,11 @@ function Profile() {
                         <div className='online'></div>
                     </motion.div>
                     <p className='username'>{data.me.username}</p>
-                    <p className='friends'>No Friends</p>
+                    <p className='friends'>{`${data.me.followers?.length} Followers`}</p>
                     <p className='bio'>{data.me.bio}</p>
                     <motion.div className='button-container'>
                         <Link to='/edit'><WideButton word="Edit Profile"/></Link>
-                        <GrayButton word="Friends"/>
+                        <GrayButton word="Following"/>
                     </motion.div>
                 </section>
                 )}

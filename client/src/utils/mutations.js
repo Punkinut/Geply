@@ -76,3 +76,37 @@ export const updateBio = gql `
     }
   }
 `;
+
+export const addFollowing = gql `
+  mutation addFollowing ($id: String!) {
+    addFollowing(id: $id) {
+      _id
+      username
+      followers {
+        _id
+        username
+      }
+      following {
+        _id
+        username
+      }
+    }
+  }`
+;
+
+export const removeFollowing = gql `
+  mutation removeFollowing ($id: String!) {
+    removeFollowing(id: $id) {
+      _id
+      username
+      followers {
+        _id
+        username
+      }
+      following {
+        _id
+        username
+      }
+    }
+  }`
+;

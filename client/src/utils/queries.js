@@ -8,6 +8,20 @@ export const GET_ME = gql`
         online
         bio
         propic
+        followers {
+          _id
+          username
+          online
+          bio
+          propic
+        }
+        following {
+          _id
+          username
+          online
+          bio
+          propic
+        }
         }
     }
 `;
@@ -19,6 +33,20 @@ export const SEARCH_USERS = gql `
         username
         online
         propic
+        followers {
+          _id
+          username
+          online
+          bio
+          propic
+        }
+        following {
+          _id
+          username
+          online
+          bio
+          propic
+        }
       }
     }
 `;
@@ -26,10 +54,25 @@ export const SEARCH_USERS = gql `
 export const singleUser = gql `
   query singleUser ($id: String!) {
     singleUser(id: $id) {
+      _id
       username
       online
       bio
       propic
+      followers {
+        _id
+        username
+        online
+        bio
+        propic
+      }
+      following {
+        _id
+        username
+        online
+        bio
+        propic
+      }
     }
   }
 `;

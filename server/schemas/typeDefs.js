@@ -9,6 +9,8 @@ type User {
     online: Boolean
     bio: String
     propic: String
+    followers: [User]
+    following: [User]
 }
 
 type S3Payload {
@@ -36,6 +38,8 @@ type Mutation {
     offline: User
     updateIcon(url: String!): User
     updateBio(bio: String!): User
+    addFollowing(id: String!): [User]
+    removeFollowing(id: String!): [User]
 }
 
 `;

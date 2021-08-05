@@ -10,21 +10,31 @@ const resolvers = {
     Query: {
         me: async (parent, args, context) => {
           if (context.user) {
-            return User.findOne({ _id: context.user._id })
+            return User.findOne({ _id: context.user._id }).populate('followers').populate('following')
           }
           throw new AuthenticationError('Cannot find a user with this id!');
         },
         allUsers: async () => {
-          return User.find()
+          return User.find().populate('followers').populate('following')
         },
         singleUser: async (_, { id }) => {
-          return User.findOne({_id: id})
+          return User.findOne({_id: id}).populate('followers').populate('following');
         },
         searchUsers: async (_, { username }) => {
-          return User.find({ username: {$regex: username, $options: 'i'} })
+          return User.find({ username: {$regex: username, $options: 'i'} }).populate('followers').populate('following')
         }
       },
     Mutation: {
+        addFollowing: async (_, { id }, context) => {
+          const user1 = await User.findOneAndUpdate({ _id: context.user._id }, { $push: {following: id } }, {new: true}).populate('followers').populate('following');
+          const user2 = await User.findOneAndUpdate({ _id: id }, { $push: {followers: context.user._id } }, {new: true}).populate('followers').populate('following');
+          return [user1, user2]
+        },
+        removeFollowing: async (_, { id }, context) => {
+          const user1 = await User.findOneAndUpdate({ _id: context.user._id }, { $pull: {following: id } }, {new: true}).populate('followers').populate('following');
+          const user2 = await User.findOneAndUpdate({ _id: id }, { $pull: {followers: context.user._id } }, {new: true}).populate('followers').populate('following');
+          return [user1, user2]
+        },
         signS3: async (parent, { filename, filetype, }) => {
           const s3 = new aws.S3({
             signatureVersion: 'v4',
@@ -49,8 +59,8 @@ const resolvers = {
             url
           };
         },
-        signUp: async (parent, { email, username, password, online, bio, propic }) => {
-            const user = await User.create({ email, username, password, online, bio, propic });
+        signUp: async (parent, { email, username, password, online, bio, propic, followers, following }) => {
+            const user = await User.create({ email, username, password, online, bio, propic, followers, following });
             const token = signToken(user)
             await User.updateOne({ email }, { online: true });
             return { token, user}
@@ -71,7 +81,7 @@ const resolvers = {
       
             const token = signToken(user);
 
-            await User.updateOne({ email }, { online: true });
+            await User.updateOne({ email }, { online: true }, {new: true});
       
             return { token, user };
           },

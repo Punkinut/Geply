@@ -1,21 +1,35 @@
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { motion } from 'framer-motion';
 import React from 'react'
-import  { Link, Redirect, useParams } from 'react-router-dom'
+import  { Redirect, useParams } from 'react-router-dom'
 import GrayButton from '../components/Tools/GrayButton';
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 import WideButton from '../components/Tools/WideButton';
 import Auth from '../utils/auth';
-import { singleUser } from '../utils/queries';
+import { addFollowing, removeFollowing } from '../utils/mutations';
+import { GET_ME, singleUser } from '../utils/queries';
 
 function User() {
     const { id } = useParams();
 
+    const [follow] = useMutation(addFollowing);
+    const [unfollow] = useMutation(removeFollowing);
+
     const { loading, data } = useQuery(singleUser, {
         variables: { id }
     });
+    const { data: dataB } = useQuery(GET_ME);
 
     const profile = data?.singleUser || {};
+    const yourProfile = dataB?.me?._id || {};
+ 
+    const plusFollow = async () => {
+        await follow({ variables: {id}})
+    };
+
+    const minusFollow = async () => {
+        await unfollow({ variables: {id}})
+    };
 
     if (!Auth.loggedIn()){
     return <Redirect to='/welcome'/>
@@ -44,10 +58,14 @@ function User() {
                         <div className={profile.online ? 'online': 'offline'}></div>
                     </motion.div>
                     <p className='username'>{profile.username}</p>
-                    <p className='friends'>No Friends</p>
+                    <p className='friends'>{`${profile.followers?.length} Followers`}</p>
                     <p className='bio'>{profile.bio}</p>
                     <motion.div className='button-container'>
-                        <Link to='/edit'><WideButton word="Add Friend"/></Link>
+                            {profile?.followers?.some(user => user._id === yourProfile) ? (
+                                    <div onClick={minusFollow}><GrayButton word="Unfollow"/></div>
+                            ) : (
+                                <div onClick={plusFollow}><WideButton word="Follow"/></div>
+                            )}
                         <GrayButton word="Message"/>
                     </motion.div>
                 </section>
