@@ -25,6 +25,7 @@ type Query {
     me: User
     allUsers: [User]
     searchUsers(username: String!): [User]
+    singleUser(id: String!): User
 }
 
 type Mutation {

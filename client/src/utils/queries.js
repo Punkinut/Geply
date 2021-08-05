@@ -22,3 +22,14 @@ export const SEARCH_USERS = gql `
       }
     }
 `;
+
+export const singleUser = gql `
+  query singleUser ($id: String!) {
+    singleUser(id: $id) {
+      username
+      online
+      bio
+      propic
+    }
+  }
+`;

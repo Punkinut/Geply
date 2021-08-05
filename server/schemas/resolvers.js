@@ -17,6 +17,9 @@ const resolvers = {
         allUsers: async () => {
           return User.find()
         },
+        singleUser: async (_, { id }) => {
+          return User.findOne({_id: id})
+        },
         searchUsers: async (_, { username }) => {
           return User.find({ username: {$regex: username, $options: 'i'} })
         }

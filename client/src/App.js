@@ -6,6 +6,7 @@ import { setContext } from '@apollo/client/link/context';
 import LetsGo from './pages/LetsGo'
 import SignUp from './pages/SignUp'
 import Login from './pages/Login';
+import User from './pages/User';
 import Home from './pages/Home';
 import './styles/reset.css'
 import './styles/style.css'
@@ -49,6 +50,7 @@ function App() {
                             <Route exact path='/' component={Home} />
                             <Route exact path='/friends' component={Friends} />
                             <Route exact path='/profile' component={Profile} />
+                            <Route exact path='/profile/:id' component={User} />
                             <Route exact path='/edit' component={EditProfile} />
                             <Route exact path='/bio' component={Bio} />
                             <Route exact path='/welcome' component={LetsGo} />
