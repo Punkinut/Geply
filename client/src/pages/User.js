@@ -68,7 +68,7 @@ function User() {
                             {profile?.followers?.some(user => user._id === yourProfile) ? (
                                     <div onClick={minusFollow}><GrayButton word="Unfollow"/></div>
                             ) : (
-                                <div onClick={plusFollow}><WideButton word="Follow"/></div>
+                                    <div onClick={plusFollow}><WideButton word="Follow"/></div>
                             )}
                         <GrayButton word="Message"/>
                     </motion.div>

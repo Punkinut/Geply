@@ -61,7 +61,11 @@ function Friends() {
                                     )}
                                     
                                 </section>
-                                <button></button>
+                                {user?.followers?.some(user => user._id === yourID) ? (
+                                    <button className='added-button'>Added</button>
+                                ) : (
+                                    <button className='follow-button'>Follow</button>
+                                )}
                             </Link>  
                             )
                             

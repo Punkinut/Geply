@@ -452,7 +452,7 @@ select:focus {
   flex-direction: column;
   justify-content: space-between;
   height: 37px;
-  width: 130px;
+  width: 90px;
 }
 
 .light-text {
@@ -569,6 +569,26 @@ select:focus {
 
 .profile-card:active {
   background-color: var(--blue-gray);
+}
+
+.follow-button {
+  padding: 8px 12px;
+  border: none;
+  font-size: 14px;
+  background-color: var(--blue);
+  color: white;
+  border-radius: 7px;
+  width: 70px;
+}
+
+.added-button {
+  padding: 8px 12px;
+  border: none;
+  font-size: 14px;
+  background-color: var(--blue-gray);
+  color: #3030309d;
+  border-radius: 7px;
+  width: 70px;
 }
 
 @media screen and (max-width: 350px) {
