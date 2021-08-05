@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import  { Link, Redirect } from 'react-router-dom'
 import { useQuery } from '@apollo/client';
 import Auth from '../utils/auth';
-import { SEARCH_USERS } from '../utils/queries';
+import { GET_ME, SEARCH_USERS } from '../utils/queries';
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 
 function Friends() {
@@ -11,6 +11,9 @@ function Friends() {
     const [search, setSearch ] = useState('')
 
     const { data, loading } = useQuery(SEARCH_USERS, { variables: {username: search}});
+    const { data: dataB } = useQuery(GET_ME);
+    const yourID = dataB?.me?._id || {};
+
     const handleChange = (e) => {
         const { value } = e.target;
         setSearch(value);
@@ -37,7 +40,10 @@ function Friends() {
                         </section>
                     ) : (
                         data?.searchUsers?.map((user) => (
-                            <Link to={`profile/${user._id}`} className='profile-card' key={user._id}>
+                            yourID === user._id ? (
+                                <div key={user._id}></div>
+                            ) : (
+                              <Link to={`profile/${user._id}`} className='profile-card' key={user._id}>
                                 <section className='image-container small-image-container'>
                                     {user.propic === '#' ? (
                                         <p>{user.username[0].toUpperCase()}</p>
@@ -51,7 +57,9 @@ function Friends() {
                                     <p className='light-text'>No Friends</p>
                                 </section>
                                 <button></button>
-                            </Link>
+                            </Link>  
+                            )
+                            
                         ))
                     )}
                 </section>
