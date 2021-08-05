@@ -37,7 +37,12 @@ function Profile() {
                         <div className='online'></div>
                     </motion.div>
                     <p className='username'>{data.me.username}</p>
-                    <p className='friends'>{`${data.me.followers?.length} Followers`}</p>
+                    {data.me.followers?.length === 1 ? (
+                        <p className='friends'>{`${data.me.followers?.length} Follower`}</p>
+                    ) : (
+                        <p className='friends'>{`${data.me.followers?.length} Followers`}</p>
+                    )}
+                    
                     <p className='bio'>{data.me.bio}</p>
                     <motion.div className='button-container'>
                         <Link to='/edit'><WideButton word="Edit Profile"/></Link>

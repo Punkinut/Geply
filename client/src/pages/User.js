@@ -58,7 +58,11 @@ function User() {
                         <div className={profile.online ? 'online': 'offline'}></div>
                     </motion.div>
                     <p className='username'>{profile.username}</p>
-                    <p className='friends'>{`${profile.followers?.length} Followers`}</p>
+                    {profile.followers?.length === 1 ? (
+                        <p className='friends'>{`${profile.followers?.length} Follower`}</p>
+                    ) : (
+                        <p className='friends'>{`${profile.followers?.length} Followers`}</p>
+                    )}
                     <p className='bio'>{profile.bio}</p>
                     <motion.div className='button-container'>
                             {profile?.followers?.some(user => user._id === yourProfile) ? (

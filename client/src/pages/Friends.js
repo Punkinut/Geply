@@ -54,7 +54,12 @@ function Friends() {
                                 </section>
                                 <section className='user-titles'>
                                     <p>{user.username}</p>
-                                    <p className='light-text'>{`${user.followers?.length} Followers`}</p>
+                                    {user.followers?.length === 1 ? (
+                                        <p className='light-text'>{`${user.followers?.length} Follower`}</p>
+                                    ) : (
+                                        <p className='light-text'>{`${user.followers?.length} Followers`}</p>
+                                    )}
+                                    
                                 </section>
                                 <button></button>
                             </Link>  
