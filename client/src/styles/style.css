@@ -204,6 +204,23 @@ select:focus {
   z-index: 1;
   top: 40px;
   display: none;
+  z-index: 999999;
+}
+
+.addPostDes {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue-gray);
+  border-radius: 20px;
+  left: 35px;
+  z-index: 1;
+  top: 90px;
+  cursor: pointer !important;
+  z-index: 999999;
 }
 
 .lil-gray {
@@ -260,6 +277,11 @@ select:focus {
 
 .icon {
   width: 22px;
+  opacity: 0.25;
+}
+
+.plus-icon {
+  width: 18px;
   opacity: 0.25;
 }
 
@@ -509,7 +531,13 @@ select:focus {
 
 @media screen and (max-width: 400px) {
   .addPost {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .addPostDes {
+    display: none;
   }
 
   .account-header {
