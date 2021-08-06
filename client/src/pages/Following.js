@@ -13,7 +13,6 @@ function Following() {
     const { data, loading } = useQuery(GET_ME);
 
     const following = data?.me?.following || {};
-    console.log(following)
 
     if (!Auth.loggedIn()){
     return <Redirect to='/welcome'/>
@@ -34,7 +33,7 @@ function Following() {
                     ) : (
                         following[0] === undefined ? (
                             <>
-                                <img alt='Person Icon' className='person' src={Guy}/>
+                                <img alt='Person Icon' className='guy' src={Guy}/>
                                 <p className='light-text no-following'>You have no friends...</p>
                                 <Link to='/friends'><GrayButton word="Explore"/></Link>
                             </>

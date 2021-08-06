@@ -190,6 +190,10 @@ select:focus {
   padding: 50px;
 }
 
+.guy {
+  padding-bottom: 50px;
+}
+
 .lil-gray {
   padding-top: 20px;
   font-size: 12px;
