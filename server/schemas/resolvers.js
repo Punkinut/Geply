@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, Post } = require('../models');
 const { signToken } = require('../utils/auth');
 const aws = require('aws-sdk')
 require('dotenv').config()
@@ -25,6 +25,9 @@ const resolvers = {
         }
       },
     Mutation: {
+        createPost: async (_, { url }, context) => {
+          return Post.create({ photo: url, username: context.user.username })
+        },
         addFollowing: async (_, { id }, context) => {
           const user1 = await User.findOneAndUpdate({ _id: context.user._id }, { $push: {following: id } }, {new: true}).populate('followers').populate('following');
           const user2 = await User.findOneAndUpdate({ _id: id }, { $push: {followers: context.user._id } }, {new: true}).populate('followers').populate('following');

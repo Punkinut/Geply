@@ -110,3 +110,16 @@ export const removeFollowing = gql `
     }
   }`
 ;
+
+export const createPost = gql `
+  mutation createPost ($url: String!) {
+    createPost(url: $url) {
+      photo
+      username
+      likes
+      comments {
+        commentText
+      }
+    }
+  }
+`;

@@ -13,6 +13,19 @@ type User {
     following: [User]
 }
 
+type Post {
+    _id: ID!
+    photo: String!
+    username: String!
+    likes: Int
+    comments: [Comment]
+}
+
+type Comment {
+    _id: ID
+    commentText: String
+  }
+
 type S3Payload {
     signedRequest: String!,
     url: String!,
@@ -40,6 +53,7 @@ type Mutation {
     updateBio(bio: String!): User
     addFollowing(id: String!): [User]
     removeFollowing(id: String!): [User]
+    createPost(url: String!): Post
 }
 
 `;
