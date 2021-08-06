@@ -1,6 +1,6 @@
 import React from 'react'
 import Auth from '../../utils/auth';
-import Message from '../../images/Message.svg'
+import Home from '../../images/Home.svg'
 import Compass from '../../images/Compass.svg'
 import User from '../../images/User.svg'
 import { NavLink } from 'react-router-dom'
@@ -17,7 +17,7 @@ function MobileNav() {
             >
                 <section className='mobile-nav'>
                     <NavLink exact activeClassName='active-icon' className={'icon'} to='/friends'><img alt='Compass Icon' src={Compass}/></NavLink>
-                    <NavLink exact activeClassName='active-icon' className={'icon'} to='/'><img alt='Message Icon' src={Message}/></NavLink>
+                    <NavLink exact activeClassName='active-icon' className={'icon'} to='/'><img alt='Message Icon' src={Home}/></NavLink>
                     <NavLink exact activeClassName='active-icon' className={'icon user'} to='/profile'><img alt='User Icon' src={User}/></NavLink>
                 </section>
             </motion.div>
