@@ -18,6 +18,7 @@ import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
 import Bio from './pages/Bio';
 import Following from './pages/Following';
+import Upload from './pages/Upload';
 
 
 const httpLink = createHttpLink({
@@ -70,6 +71,7 @@ function App() {
                             <Route exact path='/' component={Home} />
                             <Route exact path='/friends' component={Friends} />
                             <Route exact path='/profile' component={Profile} />
+                            <Route exact path='/upload' component={Upload} />
                             <Route exact path='/following' component={Following} />
                             <Route exact path='/profile/:id' component={User} />
                             <Route exact path='/edit' component={EditProfile} />
