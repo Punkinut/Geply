@@ -16,6 +16,7 @@ type User {
 type Post {
     _id: ID!
     photo: String!
+    caption: String!
     username: String!
     likes: Int
     comments: [Comment]
@@ -39,6 +40,7 @@ type Auth {
 type Query {
     me: User
     allUsers: [User]
+    allPosts: [Post]
     searchUsers(username: String!): [User]
     singleUser(id: String!): User
 }
@@ -53,7 +55,7 @@ type Mutation {
     updateBio(bio: String!): User
     addFollowing(id: String!): [User]
     removeFollowing(id: String!): [User]
-    createPost(url: String!): Post
+    createPost(url: String!, caption: String!): Post
 }
 
 `;

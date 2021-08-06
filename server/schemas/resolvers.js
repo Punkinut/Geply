@@ -17,6 +17,9 @@ const resolvers = {
         allUsers: async () => {
           return User.find().populate('followers').populate('following')
         },
+        allPosts: async () => {
+          return Post.find()
+        },
         singleUser: async (_, { id }) => {
           return User.findOne({_id: id}).populate('followers').populate('following');
         },
@@ -25,8 +28,8 @@ const resolvers = {
         }
       },
     Mutation: {
-        createPost: async (_, { url }, context) => {
-          return Post.create({ photo: url, username: context.user.username })
+        createPost: async (_, { url, caption }, context) => {
+          return Post.create({ photo: url, caption: caption, username: context.user.username })
         },
         addFollowing: async (_, { id }, context) => {
           const user1 = await User.findOneAndUpdate({ _id: context.user._id }, { $push: {following: id } }, {new: true}).populate('followers').populate('following');
