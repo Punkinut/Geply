@@ -194,6 +194,18 @@ select:focus {
   padding-bottom: 50px;
 }
 
+.addPost {
+  height: 50px;
+  width: 40px;
+  position: absolute;
+  background-color: var(--blue-gray);
+  border-radius: 40px;
+  left: 25px;
+  z-index: 1;
+  top: 40px;
+  display: none;
+}
+
 .lil-gray {
   padding-top: 20px;
   font-size: 12px;
@@ -496,6 +508,10 @@ select:focus {
 }
 
 @media screen and (max-width: 400px) {
+  .addPost {
+    display: block;
+  }
+
   .account-header {
     padding-top: 100px;
   }

@@ -12,6 +12,7 @@ import './styles/reset.css'
 import './styles/style.css'
 import MobileNav from './components/Nav/MobileNav';
 import DesktopNav from './components/Nav/DesktopNav';
+import AddPost from './components/Nav/AddPost';
 import Friends from './pages/Friends';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
@@ -62,6 +63,7 @@ function App() {
                 <>
                 <AnimatePresence>
                   <>    
+                        <AddPost/>
                         <DesktopNav/>
                         <MobileNav/>
                         <Switch>
