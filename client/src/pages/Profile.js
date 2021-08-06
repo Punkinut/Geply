@@ -46,7 +46,7 @@ function Profile() {
                     <p className='bio'>{data.me.bio}</p>
                     <motion.div className='button-container'>
                         <Link to='/edit'><WideButton word="Edit Profile"/></Link>
-                        <GrayButton word="Following"/>
+                        <Link to='/following'><GrayButton word="Following"/></Link>
                     </motion.div>
                 </section>
                 )}

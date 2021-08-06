@@ -21,6 +21,9 @@ export const GET_ME = gql`
           online
           bio
           propic
+          followers {
+            _id
+          }
         }
         }
     }
