@@ -70,7 +70,7 @@ function User() {
                             ) : (
                                     <div onClick={plusFollow}><WideButton word="Follow"/></div>
                             )}
-                        <GrayButton word="Message"/>
+                        <GrayButton word="Posts"/>
                     </motion.div>
                 </section>
                 )}
