@@ -15,6 +15,7 @@ type User {
 
 type Post {
     _id: ID!
+    id: String!
     photo: String!
     caption: String!
     username: String!

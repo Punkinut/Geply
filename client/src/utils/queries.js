@@ -80,16 +80,16 @@ export const singleUser = gql `
   }
 `;
 
-export const allPosts = gql`
-  query allPosts {
-    allPosts {
-      photo
-      username
-      caption
-      likes
-      comments {
-        commentText
-      }
-    }
-  }
-`;
+// export const allPosts = gql`
+//   query allPosts {
+//     allPosts {
+//       photo
+//       username
+//       caption
+//       likes
+//       comments {
+//         commentText
+//       }
+//     }
+//   }
+// `;

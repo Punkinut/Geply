@@ -114,6 +114,7 @@ export const removeFollowing = gql `
 export const createPost = gql `
   mutation createPost ($url: String!, $caption: String!) {
     createPost(url: $url, caption: $caption) {
+      id
       photo
       username
       caption
