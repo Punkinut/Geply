@@ -4,11 +4,27 @@ import  { Link, Redirect } from 'react-router-dom'
 import Auth from '../utils/auth';
 import Arrow from '../images/left-arrow.svg'
 import Send from '../images/send.svg'
+import { useMutation } from '@apollo/client';
+import { createPost, s3SignMutation } from '../utils/mutations';
+import axios from "axios";
+import { useHistory } from 'react-router';
 
 function Upload() {
+    const history = useHistory();
     const [ file, setFile ] = useState('');
     const [ caption, setCaption ] = useState('');
     const [ hasUpload, setHasUploaded ] = useState(false);
+    const [s3Sign] = useMutation(s3SignMutation);
+    const [postCreate] = useMutation(createPost);
+
+    const uploadToS3 = async (file, signedRequest) => {
+        const options = {
+          headers: {
+            "Content-Type": file.type,
+          }
+        };
+        await axios.put(signedRequest, file, options);
+      };
 
     const uploadFile = (e) => {
         setFile(e.target.files[0])
@@ -20,9 +36,19 @@ function Upload() {
         setCaption(value);
     };
 
-    const sumbmitUpload = (e) => {
+    const sumbmitUpload = async (e) => {
         e.preventDefault();
-        console.log(file, caption)
+        const response = await s3Sign({
+            variables: {
+                filename: file.name,
+                filetype: file.type
+            }
+        });
+
+        const { signedRequest, url } = response.data.signS3;
+        await uploadToS3(file, signedRequest);
+        await postCreate({ variables: {url, caption}});
+        history.replace('/profile')
     };
 
     if (!Auth.loggedIn()){
