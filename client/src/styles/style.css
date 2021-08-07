@@ -594,6 +594,62 @@ select:focus {
   transform: rotate(-45deg);
 }
 
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.feed-title {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.description {
+  width: 280px;
+  line-height: 1.3rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.feed-propic {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  background-color: var(--blue-gray);
+}
+
+.feed-photo {
+  height: 300px;
+  width: 300px;
+  border-radius: 30px;
+  background-color: var(--blue-gray);
+  overflow: hidden;
+}
+
+.feedback {
+  display: flex;
+  column-gap: 25px;
+  width: 280px;
+  margin: auto;
+}
+
+.inter {
+  display: flex;
+  width: 55px;
+  flex-direction: row;
+  column-gap: 10px;
+  align-items: center;
+}
+
 @media screen and (max-width: 400px) {
   .addPost {
     display: flex;
