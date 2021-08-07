@@ -16,6 +16,7 @@ type User {
 type Post {
     _id: ID!
     id: String!
+    propic: String!
     photo: String!
     caption: String!
     username: String!
@@ -56,7 +57,7 @@ type Mutation {
     updateBio(bio: String!): User
     addFollowing(id: String!): [User]
     removeFollowing(id: String!): [User]
-    createPost(url: String!, caption: String!): Post
+    createPost(url: String!, caption: String!, propic: String!): Post
 }
 
 `;

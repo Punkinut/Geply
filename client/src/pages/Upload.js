@@ -4,18 +4,22 @@ import  { Link, Redirect } from 'react-router-dom'
 import Auth from '../utils/auth';
 import Arrow from '../images/left-arrow.svg'
 import Send from '../images/send.svg'
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { createPost, s3SignMutation } from '../utils/mutations';
 import axios from "axios";
 import { useHistory } from 'react-router';
+import { GET_ME } from '../utils/queries';
 
 function Upload() {
     const history = useHistory();
+    const { data } = useQuery(GET_ME);
     const [ file, setFile ] = useState('');
     const [ caption, setCaption ] = useState('');
     const [ hasUpload, setHasUploaded ] = useState(false);
     const [s3Sign] = useMutation(s3SignMutation);
     const [postCreate] = useMutation(createPost);
+
+    const propic = data?.me?.propic;
 
     const uploadToS3 = async (file, signedRequest) => {
         const options = {
@@ -47,7 +51,7 @@ function Upload() {
 
         const { signedRequest, url } = response.data.signS3;
         await uploadToS3(file, signedRequest);
-        await postCreate({ variables: {url, caption}});
+        await postCreate({ variables: {url, caption, propic}});
         history.replace('/profile')
     };
 

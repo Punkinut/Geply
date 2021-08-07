@@ -9,6 +9,10 @@ const PostSchema = new Schema({
     type: String,
     required: true,
   },
+  propic: {
+    type: String,
+    required: true
+  },
   caption : {
     type: String,
     required: true,
@@ -18,7 +22,8 @@ const PostSchema = new Schema({
     required: true,
   },
   likes : {
-      type: Number
+      type: Number,
+      default: 0
   },
   comments: [
     {

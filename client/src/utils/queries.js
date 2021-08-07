@@ -84,6 +84,7 @@ export const allPosts = gql`
   query allPosts {
     allPosts {
       photo
+      propic
       username
       caption
       likes
