@@ -77,7 +77,7 @@ function Upload() {
                             </motion.button>
                         )}
                         <textarea className='caption-input light-text' placeholder='Add a caption...' maxLength='40' type='text' onChange={uploadCaption} required></textarea>
-                        <button type='submit' className='final-post'><img className='icon post-icon' alt='Send Icon' src={Send}/></button>
+                        <motion.button whileHover={{scale: 1.08}} type='submit' className='final-post'><img className='icon post-icon' alt='Send Icon' src={Send}/></motion.button>
                     </form>
                     
                 </section>

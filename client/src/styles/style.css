@@ -144,6 +144,8 @@ select:focus {
   color: white;
   font-size: 14px;
   padding: 15px;
+  position: relative;
+  overflow: hidden;
   border-radius: 8px;
   width: 160px;
   cursor: pointer;
@@ -551,8 +553,8 @@ select:focus {
 }
 
 .content-upload {
-  width: 100px;
-  height: 100px;
+  width: 160px;
+  height: 500px;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -581,6 +583,7 @@ select:focus {
   height: 50px;
   border-radius: 50px;
   background-color: var(--blue-gray);
+  cursor: pointer;
 }
 
 .post-icon {
