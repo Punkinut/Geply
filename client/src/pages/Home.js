@@ -14,7 +14,6 @@ function Home() {
 
     const posts = data?.allPosts || {};
 
-    console.log(posts)
     if (!Auth.loggedIn()){
     return <Redirect to='/welcome'/>
     }
@@ -32,30 +31,32 @@ function Home() {
                             <ThreeDotsWave/>
                         </section>
                     ) : (
-                        <section className='item-container'>
+                        posts.map((post) => (
+                        <section className='item-container' key={post._id}>
                             <div className='feed-title'>
                                 <div className='feed-propic'>
-
+                                    <img className='inside-propic' alt='Pro Pic' src={post.propic}/>
                                 </div>
-                                <p>Jeff Becker</p>
+                                <p>{post.username}</p>
                             </div>
                             <section className='feed-photo'>
-                                
+                            <img className='inside-photo' alt='Pro Pic' src={post.photo}/>
                             </section>
                             <section>
-                                <p className='light-text description'>Today I went to an awesome park and had fun</p>
+                                <p className='light-text description'>{post.caption}</p>
                             </section>
                             <section className='feedback light-text'>
                                 <div className='inter'>
                                     <img alt='Non Heart' className='icon' src={GrayHeart}/>
-                                    <p>1</p>
+                                    <p>{post.likes}</p>
                                 </div>
                                 <div className='inter'>
                                     <img alt='Non Heart' className='icon' src={Comment}/>
-                                    <p>1</p>
+                                    <p>{post.comments.length}</p>
                                 </div>
                             </section>
                         </section>
+                        ))
                     )}
                 </section>
             </section>

@@ -83,6 +83,7 @@ export const singleUser = gql `
 export const allPosts = gql`
   query allPosts {
     allPosts {
+      _id
       photo
       propic
       username

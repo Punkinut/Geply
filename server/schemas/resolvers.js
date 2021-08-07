@@ -29,7 +29,7 @@ const resolvers = {
       },
     Mutation: {
         createPost: async (_, { url, caption, propic }, context) => {
-          return Post.create({ photo: url, caption: caption, username: context.user.username, id: context.user._id, propic: propic }, {new: true})
+          return Post.create({ photo: url, caption: caption, username: context.user.username, id: context.user._id, propic: propic })
         },
         addFollowing: async (_, { id }, context) => {
           const user1 = await User.findOneAndUpdate({ _id: context.user._id }, { $push: {following: id } }, {new: true}).populate('followers').populate('following');
