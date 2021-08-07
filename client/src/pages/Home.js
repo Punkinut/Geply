@@ -10,7 +10,9 @@ import Comment from '../images/comment.svg'
 
 function Home() {
 
-    const { data, loading } = useQuery(allPosts);
+    const { data, loading } = useQuery(allPosts, {
+        fetchPolicy: 'network-only'
+    });
 
     const posts = data?.allPosts || {};
 
@@ -40,18 +42,18 @@ function Home() {
                                 <p>{post.username}</p>
                             </div>
                             <section className='feed-photo'>
-                            <img className='inside-photo' alt='Pro Pic' src={post.photo}/>
+                            <img className='inside-photo' alt='Icon Pic' src={post.photo}/>
                             </section>
                             <section>
                                 <p className='light-text description'>{post.caption}</p>
                             </section>
                             <section className='feedback light-text'>
                                 <div className='inter'>
-                                    <img alt='Non Heart' className='icon' src={GrayHeart}/>
+                                    <motion.img whileHover={{scale: 1.1}} alt='Non Heart' className='icon' src={GrayHeart}/>
                                     <p>{post.likes}</p>
                                 </div>
                                 <div className='inter'>
-                                    <img alt='Non Heart' className='icon' src={Comment}/>
+                                    <motion.img whileHover={{scale: 1.1}} alt='Non Heart' className='icon' src={Comment}/>
                                     <p>{post.comments.length}</p>
                                 </div>
                             </section>
