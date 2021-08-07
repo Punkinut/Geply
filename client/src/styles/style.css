@@ -599,7 +599,6 @@ select:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 50px;
   padding-bottom: 50px;
 }
 
@@ -607,6 +606,8 @@ select:focus {
   display: flex;
   flex-direction: column;
   row-gap: 15px;
+  padding-top: 60px;
+  padding-bottom: 50px;
 }
 
 .feed-title {
