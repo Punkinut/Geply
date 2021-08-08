@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from '@apollo/client';
 import { motion } from 'framer-motion';
 import React from 'react'
-import  { Redirect } from 'react-router-dom'
+import  { Link, Redirect } from 'react-router-dom'
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 import Auth from '../utils/auth';
 import { allPosts, GET_ME } from '../utils/queries';
@@ -88,7 +88,9 @@ function Home() {
                                     )}
                                 </div>
                                 <div className='inter'>
+                                    <Link to={`/comments/${post._id}`}>
                                     <motion.img whileHover={{scale: 1.1}} alt='Non Heart' className='icon' src={Comment}/>
+                                    </Link>
                                     <p>{post.comments.length}</p>
                                 </div>
                             </section>

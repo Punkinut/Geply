@@ -84,7 +84,7 @@ function App() {
                             <Route exact path='/upload' component={Upload} />
                             <Route exact path='/following' component={Following} />
                             <Route exact path='/profile/:id' component={User} />
-                            <Route exact path='/comments' component={Comments} />
+                            <Route exact path='/comments/:id' component={Comments} />
                             <Route exact path='/edit' component={EditProfile} />
                             <Route exact path='/bio' component={Bio} />
                             <Route exact path='/welcome' component={LetsGo} />

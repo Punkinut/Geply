@@ -1,9 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import  { Redirect } from 'react-router-dom'
+import  { Redirect, useParams } from 'react-router-dom'
 import Auth from '../utils/auth';
 
 function Comments() {
+    const { id } = useParams();
+    console.log(id)
     if (!Auth.loggedIn()){
         return <Redirect to='/'/>
         }
