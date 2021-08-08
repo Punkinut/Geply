@@ -88,7 +88,10 @@ export const allPosts = gql`
       propic
       username
       caption
-      likes
+      likes {
+        _id
+        username
+      }
       comments {
         commentText
       }

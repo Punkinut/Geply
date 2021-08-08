@@ -20,7 +20,7 @@ type Post {
     photo: String!
     caption: String!
     username: String!
-    likes: Int
+    likes: [User]
     comments: [Comment]
 }
 

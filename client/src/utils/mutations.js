@@ -118,7 +118,10 @@ export const createPost = gql `
       photo
       username
       caption
-      likes
+      likes {
+        _id
+        username
+      }
       comments {
         commentText
       }
