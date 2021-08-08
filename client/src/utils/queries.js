@@ -92,7 +92,9 @@ export const allPosts = gql`
         _id
       }
       comments {
+        _id
         commentText
+        propic
       }
     }
   }
