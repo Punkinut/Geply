@@ -15,6 +15,7 @@ function Comments() {
     });
 
     const comments = data?.onePost?.comments || {};
+    console.log(comments)
     
     if (!Auth.loggedIn()){
         return <Redirect to='/'/>
@@ -36,7 +37,19 @@ function Comments() {
                         </section>
                     ) : (
                             <section className='comment-container'>
-
+                                {comments[0] === undefined ? (
+                                    <p>Hello</p>
+                                ) : (
+                                    comments.map((comment) => (
+                                        <section className='com' key={comment._id}>
+                                            <div className='img-propic'>
+                                                <img alt='' className='comment-pic' src={comment.propic}/>
+                                            </div>
+                                            <p className='real-comment light-text'>{comment.commentText}</p>
+                                        </section>
+                                    ))
+                                )}
+                                
                             </section>
                     )}
                 </section>

@@ -678,6 +678,46 @@ select:focus {
   object-fit: contain;
 }
 
+.comment-container {
+  margin-top: 80px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  padding-bottom: 40px;
+}
+
+.com {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+}
+
+.img-propic {
+  width: 70px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: var(--blue-gray);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.real-comment {
+  padding: 20px;
+  background-color: var(--blue-gray);
+  line-height: 1.3rem;
+  border-radius: 20px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.comment-pic {
+  width: 60px;
+}
+
 @media screen and (max-width: 400px) {
   .addPost {
     display: flex;
