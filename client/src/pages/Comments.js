@@ -36,6 +36,7 @@ function Comments() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         await commentUpdate({ variables: {postId, propic, comment}})
+        setComment('')
     }
 
     const comments = data?.onePost?.comments || {};
@@ -81,7 +82,7 @@ function Comments() {
                     )}
                     <section className='comment-nav'>
                         <form onSubmit={handleSubmit} className='comment-form'>
-                            <input onChange={handleChange} className='light-text comment-input' placeholder='Add a comment...' type='text' required></input>
+                            <input value={comment} onChange={handleChange} className='light-text comment-input' placeholder='Add a comment...' type='text' required></input>
                             <button type='submit' className='comment-submit'><img className='icon post-icon' alt='Send Icon' src={Send}/></button>
                         </form>
                     </section>

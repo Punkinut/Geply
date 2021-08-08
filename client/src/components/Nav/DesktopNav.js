@@ -17,7 +17,7 @@ function DesktopNav() {
             exit={{ opacity: 0}}
             >
             <section className='desktop-nav'>
-                    <NavLink  className={'icon active-icon desktop-icon logo'} to='/friends'><motion.img whileHover={{scale: 1.1}} alt='Logo Icon' src={Logo}/></NavLink>
+                    <NavLink  className={'icon active-icon desktop-icon logo'} to='/'><motion.img whileHover={{scale: 1.1}} alt='Logo Icon' src={Logo}/></NavLink>
                     <NavLink exact activeClassName='active-icon' className={'icon desktop-icon'} to='/friends'><motion.img whileHover={{scale: 1.3, rotate: '90deg'}} alt='Compass Icon' src={Compass}/></NavLink>
                     <NavLink exact activeClassName='active-icon' className={'icon desktop-icon'} to='/'><motion.img whileHover={{scale: 1.3, borderRadius: '10px'}} alt='Message Icon' src={Home}/></NavLink>
                     <NavLink exact activeClassName='active-icon' className={'icon user desktop-icon user-d'} to='/profile'><motion.img whileHover={{scale: 1.3}} alt='User Icon' src={User}/></NavLink>
