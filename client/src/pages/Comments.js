@@ -6,6 +6,8 @@ import { onePost } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 import Arrow from '../images/left-arrow.svg'
+import GrayButton from '../components/Tools/GrayButton';
+import Guy from '../images/no-comments.svg'
 
 function Comments() {
     const { id } = useParams();
@@ -38,7 +40,11 @@ function Comments() {
                     ) : (
                             <section className='comment-container'>
                                 {comments[0] === undefined ? (
-                                    <p>Hello</p>
+                                    <section className='explore-container'>
+                                        <img alt='Person Icon' className='guy' src={Guy}/>
+                                        <p className='light-text no-following'>Post has no comments...</p>
+                                        <Link to='/'><GrayButton word="Home"/></Link>
+                                    </section>
                                 ) : (
                                     comments.map((comment) => (
                                         <section className='com' key={comment._id}>
