@@ -718,6 +718,43 @@ select:focus {
   width: 60px;
 }
 
+.comment-nav {
+  height: 50px;
+  width: 300px;
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 65px;
+  background-color: white;
+}
+
+.comment-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+}
+
+.comment-submit {
+  height: 45px;
+  width: 45px;
+  border-radius: 50px;
+  background-color: var(--blue-gray);
+  border: none;
+}
+
+.comment-input {
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--blue-gray);
+  border: 2px solid white;
+}
+
 @media screen and (max-width: 400px) {
   .addPost {
     display: flex;

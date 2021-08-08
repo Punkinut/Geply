@@ -57,6 +57,12 @@ function Comments() {
                                 
                             </section>
                     )}
+                    <section className='comment-nav'>
+                        <form className='comment-form'>
+                            <input className='light-text comment-input' placeholder='Add a comment...' type='text' required></input>
+                            <button type='submit' className='comment-submit'></button>
+                        </form>
+                    </section>
                 </section>
             </section>
         </motion.div>
