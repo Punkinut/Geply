@@ -37,6 +37,9 @@ const resolvers = {
         removeLike: async (_, { postId }, context) => {
           return Post.findOneAndUpdate({_id: postId}, {$pull: {likes: context.user._id}}, {new: true});
         },
+        addComment: async (_, {postId, propic, comment}) => {
+          return Post.findOneAndUpdate({_id: postId}, {$addToSet: { comments: {commentText: comment, propic: propic}}}, {new: true})
+        },
         addFollowing: async (_, { id }, context) => {
           const user1 = await User.findOneAndUpdate({ _id: context.user._id }, { $push: {following: id } }, {new: true}).populate('followers').populate('following');
           const user2 = await User.findOneAndUpdate({ _id: id }, { $push: {followers: context.user._id } }, {new: true}).populate('followers').populate('following');

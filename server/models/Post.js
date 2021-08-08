@@ -24,6 +24,10 @@ const PostSchema = new Schema({
   likes : [{ type: Schema.Types.ObjectId, ref: 'User' }],
   comments: [
     {
+      propic: {
+        type: String,
+        required: true
+      },
       commentText: {
         type: String,
         required: true,

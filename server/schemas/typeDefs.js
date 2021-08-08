@@ -27,6 +27,7 @@ type Post {
 type Comment {
     _id: ID
     commentText: String
+    propic: String
   }
 
 type S3Payload {
@@ -60,6 +61,7 @@ type Mutation {
     createPost(url: String!, caption: String!, propic: String!): Post
     addLike(postId: String!): Post
     removeLike(postId: String!): Post
+    addComment(postId: String!, propic: String!, comment: String!): Post
 }
 
 `;
