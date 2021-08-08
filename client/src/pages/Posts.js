@@ -40,7 +40,7 @@ function Posts() {
                         posts[0] === undefined ? (
                             <section className='explore-container'>
                                 <img alt='Person Icon' className='guy' src={Gal}/>
-                                <p className='light-text no-following'>Post has no comments...</p>
+                                <p className='light-text no-following'>User has no posts...</p>
                                 <Link to='/'><GrayButton word="Home"/></Link>
                             </section>
                         ) : (
