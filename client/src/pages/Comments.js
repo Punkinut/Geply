@@ -17,7 +17,6 @@ function Comments() {
     });
 
     const comments = data?.onePost?.comments || {};
-    console.log(comments)
     
     if (!Auth.loggedIn()){
         return <Redirect to='/'/>
