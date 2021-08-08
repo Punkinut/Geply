@@ -57,7 +57,12 @@ function Home() {
                         <section className='item-container' key={post._id}>
                             <div className='feed-title'>
                                 <div className='feed-propic'>
-                                    <img className='inside-propic' alt='Pro Pic' src={post.propic}/>
+                                    {post.propic === '#' ? (
+                                        <p className='light-text'>{post.username[0].toUpperCase()}</p>
+                                    ) : (
+                                        <img className='inside-propic' alt='Pro Pic' src={post.propic}/>
+                                    )}
+                                    
                                 </div>
                                 <p>{post.username}</p>
                             </div>
