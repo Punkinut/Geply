@@ -119,3 +119,23 @@ query onePost ($postId: String!) {
   }
 }
 `;
+
+export const userPosts = gql `
+  query userPosts ($id: String!) {
+    userPosts(id: $id) {
+      _id
+      id
+      photo
+      username
+      caption
+      likes {
+        _id
+      }
+      comments {
+          _id
+          commentText
+          propic
+        }
+    }
+  }
+`;
