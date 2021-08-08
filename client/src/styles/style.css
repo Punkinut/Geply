@@ -622,6 +622,13 @@ select:focus {
   cursor: pointer;
 }
 
+.new-des {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .description {
   width: 280px;
   line-height: 1.3rem;
