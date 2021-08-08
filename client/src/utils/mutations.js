@@ -152,3 +152,17 @@ export const removeLike = gql `
     }
   }
 `;
+
+export const addComment = gql `
+  mutation addComent ($postId: String!, $propic: String!, $comment: String!) {
+    addComment(postId: $postId, propic: $propic, comment: $comment) {
+      _id
+      propic
+      comments {
+        _id
+        commentText
+        propic
+      }
+    }
+  }
+`;

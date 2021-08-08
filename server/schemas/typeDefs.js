@@ -44,6 +44,7 @@ type Query {
     me: User
     allUsers: [User]
     allPosts: [Post]
+    onePost: Post
     searchUsers(username: String!): [User]
     singleUser(id: String!): User
 }

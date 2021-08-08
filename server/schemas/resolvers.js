@@ -20,6 +20,9 @@ const resolvers = {
         allPosts: async () => {
           return Post.find().sort({"_id": -1 })
         },
+        onePost: async (_, {postId}) => {
+          return Post.findOne({ _id: postId})
+        },
         singleUser: async (_, { id }) => {
           return User.findOne({_id: id}).populate('followers').populate('following');
         },
