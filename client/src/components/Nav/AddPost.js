@@ -6,7 +6,7 @@ import Add from '../../images/add.svg'
 
 function AddPost() {
     const location = useLocation();
-    if (!Auth.loggedIn() || location.pathname ==='/upload' || location.pathname ==='/bio' || location.pathname ==='/edit') {
+    if (!Auth.loggedIn() || location.pathname ==='/upload' || location.pathname ==='/bio' || location.pathname ==='/edit' || location.pathname.includes('/comments')) {
         return <></>
     }
     return (

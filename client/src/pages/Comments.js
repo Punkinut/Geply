@@ -1,11 +1,21 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import  { Redirect, useParams } from 'react-router-dom'
+import  { Link, Redirect, useParams } from 'react-router-dom'
 import Auth from '../utils/auth';
+import { onePost } from '../utils/queries';
+import { useQuery } from '@apollo/client';
+import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
+import Arrow from '../images/left-arrow.svg'
 
 function Comments() {
     const { id } = useParams();
-    console.log(id)
+
+    const { data, loading } = useQuery(onePost, {
+        variables: { postId: id }
+    });
+
+    const comments = data?.onePost?.comments || {};
+    
     if (!Auth.loggedIn()){
         return <Redirect to='/'/>
         }
@@ -17,7 +27,19 @@ function Comments() {
         transition={{duration: 1}}
         >
             <section className='page-container'>
-                <p>Comments</p>
+                <section className='posts-container'>
+                <Link to='/'><img className='icon left-arrow' src={Arrow} alt='Arrow Icon'/></Link>
+                    <p className='create-post'>Comments</p>
+                    {loading ? (
+                        <section className='profile-search-load-container'>
+                            <ThreeDotsWave/>
+                        </section>
+                    ) : (
+                            <section className='comment-container'>
+
+                            </section>
+                    )}
+                </section>
             </section>
         </motion.div>
     )
