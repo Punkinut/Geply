@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from '@apollo/client';
 import { motion } from 'framer-motion';
 import React from 'react'
-import  { Redirect, useParams } from 'react-router-dom'
+import  { Link, Redirect, useParams } from 'react-router-dom'
 import GrayButton from '../components/Tools/GrayButton';
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 import WideButton from '../components/Tools/WideButton';
@@ -70,7 +70,7 @@ function User() {
                             ) : (
                                     <div onClick={plusFollow}><WideButton word="Follow"/></div>
                             )}
-                        <GrayButton word="Posts"/>
+                        <Link to={`/posts/${profile._id}`}><GrayButton word="Posts"/></Link>
                     </motion.div>
                 </section>
                 )}
