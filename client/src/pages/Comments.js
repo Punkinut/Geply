@@ -1,20 +1,42 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { motion } from 'framer-motion'
 import  { Link, Redirect, useParams } from 'react-router-dom'
 import Auth from '../utils/auth';
-import { onePost } from '../utils/queries';
-import { useQuery } from '@apollo/client';
+import { GET_ME, onePost } from '../utils/queries';
+import { useMutation, useQuery } from '@apollo/client';
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 import Arrow from '../images/left-arrow.svg'
 import GrayButton from '../components/Tools/GrayButton';
 import Guy from '../images/no-comments.svg'
+import Send from '../images/send.svg'
+import { addComment } from '../utils/mutations';
 
 function Comments() {
+
+    const [comment, setComment] = useState('');
     const { id } = useParams();
+
+    const [commentUpdate] = useMutation(addComment);
 
     const { data, loading } = useQuery(onePost, {
         variables: { postId: id }
     });
+
+    const { data: dataB } = useQuery(GET_ME);
+
+    const propic =  dataB?.me?.propic;
+
+    const handleChange = (e) => {
+        const { value } = e.target;
+        setComment(value)
+    }
+
+    const postId = data?.onePost?._id;
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        await commentUpdate({ variables: {postId, propic, comment}})
+    }
 
     const comments = data?.onePost?.comments || {};
     
@@ -58,9 +80,9 @@ function Comments() {
                             </section>
                     )}
                     <section className='comment-nav'>
-                        <form className='comment-form'>
-                            <input className='light-text comment-input' placeholder='Add a comment...' type='text' required></input>
-                            <button type='submit' className='comment-submit'></button>
+                        <form onSubmit={handleSubmit} className='comment-form'>
+                            <input onChange={handleChange} className='light-text comment-input' placeholder='Add a comment...' type='text' required></input>
+                            <button type='submit' className='comment-submit'><img className='icon post-icon' alt='Send Icon' src={Send}/></button>
                         </form>
                     </section>
                 </section>

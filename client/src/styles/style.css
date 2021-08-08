@@ -745,6 +745,7 @@ select:focus {
   border-radius: 50px;
   background-color: var(--blue-gray);
   border: none;
+  cursor: pointer;
 }
 
 .comment-input {
