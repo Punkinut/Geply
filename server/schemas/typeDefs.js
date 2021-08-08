@@ -58,6 +58,7 @@ type Mutation {
     addFollowing(id: String!): [User]
     removeFollowing(id: String!): [User]
     createPost(url: String!, caption: String!, propic: String!): Post
+    addLike(postId: String!): Post
 }
 
 `;

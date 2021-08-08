@@ -128,3 +128,12 @@ export const createPost = gql `
     }
   }
 `;
+
+export const addLike = gql `
+  mutation addLike ($postId: String!) {
+    addLike(postId: $postId) {
+      _id
+      username
+    }
+  }
+`;
