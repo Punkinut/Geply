@@ -90,7 +90,6 @@ export const allPosts = gql`
       caption
       likes {
         _id
-        username
       }
       comments {
         commentText

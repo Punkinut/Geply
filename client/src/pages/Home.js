@@ -50,7 +50,7 @@ function Home() {
                             <section className='feedback light-text'>
                                 <div className='inter'>
                                     <motion.img whileHover={{scale: 1.1}} alt='Non Heart' className='icon' src={GrayHeart}/>
-                                    <p>{post.likes.length}</p>
+                                    <p>{post?.likes?.length}</p>
                                 </div>
                                 <div className='inter'>
                                     <motion.img whileHover={{scale: 1.1}} alt='Non Heart' className='icon' src={Comment}/>
