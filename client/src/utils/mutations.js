@@ -134,6 +134,21 @@ export const addLike = gql `
     addLike(postId: $postId) {
       _id
       username
+      likes {
+        _id
+      }
+    }
+  }
+`;
+
+export const removeLike = gql `
+  mutation removeLike ($postId: String!) {
+    removeLike(postId: $postId) {
+      _id
+      username
+      likes {
+        _id
+      }
     }
   }
 `;

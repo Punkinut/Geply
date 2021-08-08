@@ -1,20 +1,40 @@
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { motion } from 'framer-motion';
 import React from 'react'
 import  { Redirect } from 'react-router-dom'
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 import Auth from '../utils/auth';
-import { allPosts } from '../utils/queries';
+import { allPosts, GET_ME } from '../utils/queries';
 import GrayHeart from '../images/gray-heart.svg'
+import RedHeart from '../images/red-heart.svg'
 import Comment from '../images/comment.svg'
+import { addLike, removeLike } from '../utils/mutations';
 
 function Home() {
+
+    
 
     const { data, loading } = useQuery(allPosts, {
         fetchPolicy: 'network-only'
     });
 
+    const [like] = useMutation(addLike);
+    const [unlike] = useMutation(removeLike);
+
+    const { data: dataB } = useQuery(GET_ME);
+    const yourID = dataB?.me?._id || {};
+
     const posts = data?.allPosts || {};
+
+    const plusLike = async (e) => {
+        const postId = e.target.id
+        await like({ variables: {postId}})
+    };
+
+    const minusLike = async (e) => {
+        const postId = e.target.id
+        await unlike({ variables: {postId}})
+    };
 
     if (!Auth.loggedIn()){
     return <Redirect to='/welcome'/>
@@ -49,8 +69,18 @@ function Home() {
                             </section>
                             <section className='feedback light-text'>
                                 <div className='inter'>
-                                    <motion.img whileHover={{scale: 1.1}} alt='Non Heart' className='icon' src={GrayHeart}/>
-                                    <p>{post?.likes?.length}</p>
+                                    {post?.likes?.some(like => like._id === yourID) ? (
+                                        <>
+                                        <motion.img whileHover={{scale: 1.1}} alt='Non Heart' onClick={minusLike} id={post._id} className='normal-icon' src={RedHeart}/>
+                                        <p>{post?.likes?.length}</p>
+                                        </>
+                                        
+                                    ) : (
+                                        <>
+                                        <motion.img whileHover={{scale: 1.1}} alt='Non Heart' onClick={plusLike} id={post._id} className='icon' src={GrayHeart}/>
+                                        <p>{post?.likes?.length}</p>
+                                        </>
+                                    )}
                                 </div>
                                 <div className='inter'>
                                     <motion.img whileHover={{scale: 1.1}} alt='Non Heart' className='icon' src={Comment}/>

@@ -285,6 +285,11 @@ select:focus {
   cursor: pointer;
 }
 
+.normal-icon {
+  width: 22px;
+  cursor: pointer;
+}
+
 .plus-icon {
   width: 18px;
   opacity: 0.25;
