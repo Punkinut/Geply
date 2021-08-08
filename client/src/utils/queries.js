@@ -99,3 +99,23 @@ export const allPosts = gql`
     }
   }
 `;
+
+export const onePost = gql `
+query onePost ($postId: String!) {
+  onePost (postId: $postId) {
+  	_id
+    photo
+    propic
+    username
+    caption
+    likes {
+      _id
+    }
+    comments {
+      _id
+      commentText
+      propic
+    }
+  }
+}
+`;
