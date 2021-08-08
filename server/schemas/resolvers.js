@@ -20,6 +20,9 @@ const resolvers = {
         allPosts: async () => {
           return Post.find().sort({"_id": -1 })
         },
+        userPosts: async (_, {id}) => {
+          return Post.find({id}).sort({"_id": -1 })
+        },
         onePost: async (_, {postId}) => {
           return Post.findOne({ _id: postId})
         },

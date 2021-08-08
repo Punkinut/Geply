@@ -47,6 +47,7 @@ type Query {
     onePost(postId: String!): Post
     searchUsers(username: String!): [User]
     singleUser(id: String!): User
+    userPosts(id: String!): [Post]
 }
 
 type Mutation {
