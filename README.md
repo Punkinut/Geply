@@ -5,7 +5,7 @@ A social media application built with React and MongoDB
 ## Deployment
 
 My Application has been deployed with Heroku here |
-[Geply](#)
+[Geply](https://geply.herokuapp.com/)
 
 ## Why make this?
 
