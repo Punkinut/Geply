@@ -9,9 +9,11 @@ import { createPost, s3SignMutation } from '../utils/mutations';
 import axios from "axios";
 import { useHistory } from 'react-router';
 import { GET_ME } from '../utils/queries';
+import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 
 function Upload() {
     const history = useHistory();
+    const [ showLoading, setLoading ] = useState(false);
     const { data } = useQuery(GET_ME);
     const [ file, setFile ] = useState('');
     const [ caption, setCaption ] = useState('');
@@ -50,8 +52,10 @@ function Upload() {
         });
 
         const { signedRequest, url } = response.data.signS3;
+        setLoading(true);
         await uploadToS3(file, signedRequest);
         await postCreate({ variables: {url, caption, propic}});
+        setLoading(false);
         history.replace('/profile')
     };
 
@@ -81,7 +85,11 @@ function Upload() {
                             </motion.button>
                         )}
                         <textarea className='caption-input light-text' placeholder='Add a caption...' maxLength='40' type='text' onChange={uploadCaption} required></textarea>
-                        <motion.button whileHover={{scale: 1.08}} type='submit' className='final-post'><img className='icon post-icon' alt='Send Icon' src={Send}/></motion.button>
+                        {showLoading ? (
+                            <ThreeDotsWave/>
+                        ) : (
+                            <motion.button whileHover={{scale: 1.08}} type='submit' className='final-post'><img className='icon post-icon' alt='Send Icon' src={Send}/></motion.button>
+                        )}
                     </form>
                     
                 </section>
