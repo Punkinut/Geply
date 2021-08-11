@@ -32,6 +32,15 @@ function Upload() {
         await axios.put(signedRequest, file, options);
       };
 
+      const formatFilename = filename => {
+        const randomString = Math.random()
+          .toString(36)
+          .substring(2, 7);
+        const cleanFileName = filename.toLowerCase().replace(/[^a-z0-9]/g, "-");
+        const newFilename = `images/${randomString}-${cleanFileName}`;
+        return newFilename.substring(0, 60);
+      };
+
     const uploadFile = (e) => {
         setFile(e.target.files[0])
         setHasUploaded(true)
@@ -46,7 +55,7 @@ function Upload() {
         e.preventDefault();
         const response = await s3Sign({
             variables: {
-                filename: file.name,
+                filename: formatFilename(file.name),
                 filetype: file.type
             }
         });
