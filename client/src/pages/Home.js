@@ -12,8 +12,6 @@ import { addLike, removeLike } from '../utils/mutations';
 
 function Home() {
 
-    
-
     const { data, loading } = useQuery(allPosts, {
         fetchPolicy: 'network-only'
     });
@@ -34,6 +32,13 @@ function Home() {
     const minusLike = async (e) => {
         const postId = e.target.id
         await unlike({ variables: {postId}})
+    };
+
+    const onImgLoad = (e) => {
+        const height = e.target.offsetHeight;
+        if (height < 300) {
+            e.target.className = 'height-photo'
+        }
     };
 
     if (!Auth.loggedIn()){
@@ -67,7 +72,7 @@ function Home() {
                                 <p>{post.username}</p>
                             </div>
                             <section className='feed-photo'>
-                            <img className='inside-photo' alt='Icon Pic' src={post.photo}/>
+                            <img className='inside-photo' alt='Icon Pic' onLoad={onImgLoad} src={post.photo}/>
                             </section>
                             <section>
                                 <p className='light-text description'>{post.caption}</p>

@@ -685,6 +685,12 @@ select:focus {
   object-fit: contain;
 }
 
+.height-photo {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}
+
 .comment-container {
   margin-top: 80px;
   width: 300px;
