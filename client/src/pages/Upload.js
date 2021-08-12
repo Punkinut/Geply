@@ -65,7 +65,7 @@ function Upload() {
         await uploadToS3(file, signedRequest);
         await postCreate({ variables: {url, caption, propic}});
         setLoading(false);
-        history.replace('/profile')
+        history.replace('/')
     };
 
     if (!Auth.loggedIn()){
