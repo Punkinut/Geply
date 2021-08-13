@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
 import { useQuery } from '@apollo/client';
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react';
+import Auth from '../utils/auth';
 import { io } from 'socket.io-client'
 import { GET_ME } from '../utils/queries';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 function MainChat() {
     const { data } = useQuery(GET_ME);
@@ -22,10 +23,10 @@ function MainChat() {
         })
     }, [user])
 
-    // ADD NOTIFICATION STYLING
-    // ADD STYLING IF MESSAGES IS TOO LONG
-    // MOVE TO MESSAGE PAGE STYLING
-    // THEN TO BACK END INTERGRATION
+    
+    if (!Auth.loggedIn()){
+        return <Redirect to='/'/>
+        }
     return (
         <motion.div
         initial={{ opacity: 0}}
