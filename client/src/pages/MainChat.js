@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import React, { useEffect, useRef } from 'react'
 import { io } from 'socket.io-client'
 import { GET_ME } from '../utils/queries';
+import { Link } from 'react-router-dom';
 
 function MainChat() {
     const { data } = useQuery(GET_ME);
@@ -34,6 +35,24 @@ function MainChat() {
                     <div className='search-container'>
                         <input placeholder='Search' className='search-bar'/>
                     </div>
+                    <Link to={`message/id`} className='message-card'>
+                        <section className='image-container small-image-container'>
+                            <p></p>
+                        </section>
+                        <section className='message-titles'>
+                            <p>Jeff Beck</p>
+                            <p className='light-text'>Hey how is it going</p>
+                        </section>
+                    </Link> 
+                    <Link to={`message/id`} className='message-card'>
+                        <section className='image-container small-image-container'>
+                            <p></p>
+                        </section>
+                        <section className='message-titles'>
+                            <p>Smoe Mith</p>
+                            <p className='light-text'>I went out to lunch today </p>
+                        </section>
+                    </Link> 
                 </section>
             </section>
         </motion.div>
