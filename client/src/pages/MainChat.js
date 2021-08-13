@@ -22,7 +22,10 @@ function MainChat() {
         })
     }, [user])
 
-
+    // ADD NOTIFICATION STYLING
+    // ADD STYLING IF MESSAGES IS TOO LONG
+    // MOVE TO MESSAGE PAGE STYLING
+    // THEN TO BACK END INTERGRATION
     return (
         <motion.div
         initial={{ opacity: 0}}
@@ -35,7 +38,7 @@ function MainChat() {
                     <div className='search-container'>
                         <input placeholder='Search' className='search-bar'/>
                     </div>
-                    <Link to={`message/id`} className='message-card'>
+                    <Link to={`/message`} className='message-card'>
                         <section className='image-container small-image-container'>
                             <p></p>
                         </section>
@@ -44,7 +47,7 @@ function MainChat() {
                             <p className='light-text'>Hey how is it going</p>
                         </section>
                     </Link> 
-                    <Link to={`message/id`} className='message-card'>
+                    <Link to={`/message`} className='message-card'>
                         <section className='image-container small-image-container'>
                             <p></p>
                         </section>
