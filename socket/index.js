@@ -4,7 +4,10 @@ const io = require('socket.io')(8900, {
     },
 });
 
+let users = [];
+
 io.on('connection', (socket) => {
-    console.log('A user connected!')
+    io.emit('Welcome, this is socket.io')
+    
 })
 
