@@ -338,6 +338,17 @@ select:focus {
   border-radius: 50px;
 }
 
+.notification {
+  position: absolute;
+  border: 7px solid white;
+  width: 38px;
+  height: 38px;
+  top: 7px;
+  left: 55px;
+  background-color: var(--blue);
+  border-radius: 50px;
+}
+
 .offline {
   position: absolute;
   border: 11px solid white;
@@ -869,6 +880,7 @@ select:focus {
   flex-direction: row;
   align-items: center;
   column-gap: 20px;
+  position: relative;
   cursor: pointer;
   text-decoration: none;
   color: var(--black);
@@ -889,6 +901,10 @@ select:focus {
 
 .message-card:active {
   background-color: var(--blue-gray);
+}
+
+.image-chat {
+  position: relative;
 }
 
 .follow-button {

@@ -40,9 +40,11 @@ function MainChat() {
                         <input placeholder='Search' className='search-bar'/>
                     </div>
                     <Link to={`/message`} className='message-card'>
-                        <section className='image-container small-image-container'>
+                        <section className='image-container image-chat small-image-container'>
                             <p></p>
+                        
                         </section>
+                        <div className='notification'></div>
                         <section className='message-titles'>
                             <p>Jeff Beck</p>
                             <p className='light-text'>Hey how is it going</p>
