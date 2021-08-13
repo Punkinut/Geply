@@ -47,6 +47,7 @@ function MainChat() {
                         <div className='notification'></div>
                         <section className='message-titles'>
                             <p>Jeff Beck</p>
+                            {/* Will have to shorten when getting data */}
                             <p className='light-text'>Hey how is it going</p>
                         </section>
                     </Link> 
@@ -56,6 +57,7 @@ function MainChat() {
                         </section>
                         <section className='message-titles'>
                             <p>Smoe Mith</p>
+                            {/* Will have to shorten when getting data */}
                             <p className='light-text'>I went out to lunch today </p>
                         </section>
                     </Link> 
