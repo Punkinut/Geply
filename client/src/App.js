@@ -21,6 +21,7 @@ import Following from './pages/Following';
 import Upload from './pages/Upload';
 import Comments from './pages/Comments';
 import Posts from './pages/Posts';
+import MainChat from './pages/MainChat';
 
 
 const httpLink = createHttpLink({
@@ -81,6 +82,7 @@ function App() {
                         <Switch>
                             <Route exact path='/' component={Home} />
                             <Route exact path='/friends' component={Friends} />
+                            <Route exact path='/chat' component={MainChat} />
                             <Route exact path='/profile' component={Profile} />
                             <Route exact path='/upload' component={Upload} />
                             <Route exact path='/following' component={Following} />
