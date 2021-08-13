@@ -1,10 +1,24 @@
-import React, { useRef } from 'react'
+import { useQuery } from '@apollo/client';
+import React, { useEffect, useRef } from 'react'
 import { io } from 'socket.io-client'
+import { GET_ME } from '../utils/queries';
 
 function MainChat() {
-    const socket = useRef(io('ws://localhost:8900'));
+    const { data } = useQuery(GET_ME);
+    const user = data?.me;
+
+    const socket = useRef();
+
+    useEffect(() => {
+        socket.current = io('ws://localhost:8900');
+    }, [])
     
-    console.log(socket)
+    useEffect(() => {
+        socket.current.emit('addUser', user?._id);
+        socket.current.on('getUsers', users => {
+            console.log(users)
+        })
+    }, [user])
     return (
         <>
             <section className='page-container'>
