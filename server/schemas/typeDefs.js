@@ -26,7 +26,7 @@ type Post {
 
 type Conversation {
     _id: ID!
-    members: [String!]
+    members: [User]
 }
 
 type Message {
@@ -60,6 +60,7 @@ type Query {
     searchUsers(username: String!): [User]
     singleUser(id: String!): User
     userPosts(id: String!): [Post]
+    getConversations: [Conversation]
 }
 
 type Mutation {

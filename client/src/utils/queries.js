@@ -139,3 +139,17 @@ export const userPosts = gql `
     }
   }
 `;
+
+export const getConversations = gql `
+  query getConversations {
+    getConversations {
+      _id
+      members {
+        _id
+        username
+        propic
+        bio
+      }
+    }
+  }
+`;

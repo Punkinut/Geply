@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const ConversationSchema = new Schema({
     members: {
-        type: Array,
+        type: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     },
 });
 

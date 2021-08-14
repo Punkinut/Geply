@@ -31,6 +31,9 @@ const resolvers = {
         },
         searchUsers: async (_, { username }) => {
           return User.find({ username: {$regex: username, $options: 'i'} }).populate('followers').populate('following')
+        },
+        getConversations: async (_, args, context) => {
+          return Conversation.find( { members: context.user._id}).populate('members')
         }
       },
     Mutation: {
