@@ -183,7 +183,9 @@ export const createMessage = gql `
     createMessage(conversationId: $conversationId, text: $text) {
       _id
       conversationId
-      sender
+      sender {
+        _id
+      }
       text
     }
   }

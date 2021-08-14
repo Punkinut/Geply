@@ -32,7 +32,7 @@ type Conversation {
 type Message {
     _id: ID!
     conversationId: String!
-    sender: String!
+    sender: User
     text: String!
 }
 
