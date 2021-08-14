@@ -166,3 +166,12 @@ export const addComment = gql `
     }
   }
 `;
+
+export const createConversation = gql `
+  mutation createConversation($id: String!) {
+    createConversation(id: $id) {
+      _id
+      members
+    }
+  }
+`;
