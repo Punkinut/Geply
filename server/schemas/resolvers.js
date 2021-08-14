@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Post, Conversation } = require('../models');
+const { User, Post, Conversation, Message } = require('../models');
 const { signToken } = require('../utils/auth');
 const aws = require('aws-sdk')
 require('dotenv').config()
@@ -36,6 +36,9 @@ const resolvers = {
     Mutation: {
         createConversation: async (_, {id}, context) => {
           return Conversation.create({members: [id, context.user._id]})
+        },
+        createMessage: async (_, {conversationId, text}, context) => {
+          return Message.create({conversationId: conversationId, sender: context.user._id, text: text})
         },
         createPost: async (_, { url, caption, propic }, context) => {
           return Post.create({ photo: url, caption: caption, username: context.user.username, id: context.user._id, propic: propic })

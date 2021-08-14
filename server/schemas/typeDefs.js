@@ -26,7 +26,14 @@ type Post {
 
 type Conversation {
     _id: ID!
-    members: String!
+    members: [String!]
+}
+
+type Message {
+    _id: ID!
+    conversationId: String!
+    sender: String!
+    text: String!
 }
 
 type Comment {
@@ -70,6 +77,7 @@ type Mutation {
     removeLike(postId: String!): Post
     addComment(postId: String!, propic: String!, comment: String!): Post
     createConversation(id: String!): Conversation
+    createMessage(conversationId: String!, text: String!): Message
 }
 
 `;
