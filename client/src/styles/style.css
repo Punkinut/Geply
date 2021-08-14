@@ -725,6 +725,27 @@ select:focus {
   align-items: center;
 }
 
+.com2 {
+  width: 85%;
+}
+
+.message-header {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  padding: 0px 30px;
+  position: fixed;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue-gray);
+}
+
+.realtime-message {
+  padding-top: 60px;
+}
+
 .img-propic {
   width: 70px;
   height: 50px;
@@ -762,6 +783,23 @@ select:focus {
   padding-top: 40px;
   padding-bottom: 65px;
   background-color: white;
+}
+
+.blue-comment {
+  padding: 20px;
+  background-color: var(--blue-gray);
+  line-height: 1.3rem;
+  border-radius: 20px;
+  width: 80%;
+  display: flex;
+  margin-right: 0px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.blue-message {
+  background-color: var(--blue) !important;
+  color: white !important;
 }
 
 .comment-form {
