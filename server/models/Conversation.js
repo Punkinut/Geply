@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const ConversationSchema = new Schema({
-    member: {
+    members: {
         type: Array,
     },
 });
