@@ -175,3 +175,14 @@ export const createConversation = gql `
     }
   }
 `;
+
+export const createMessage = gql `
+  mutation createMessage($conversationId: String!, $text: String!) {
+    createMessage(conversationId: $conversationId, text: $text) {
+      _id
+      conversationId
+      sender
+      text
+    }
+  }
+`;
