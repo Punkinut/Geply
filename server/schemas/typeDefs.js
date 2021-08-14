@@ -61,6 +61,7 @@ type Query {
     singleUser(id: String!): User
     userPosts(id: String!): [Post]
     getConversations: [Conversation]
+    getMessages(conversationId: String!): [Message]
 }
 
 type Mutation {

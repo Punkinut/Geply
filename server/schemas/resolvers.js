@@ -34,6 +34,9 @@ const resolvers = {
         },
         getConversations: async (_, args, context) => {
           return Conversation.find( { members: context.user._id}).populate('members')
+        },
+        getMessages: async (_, {conversationId}) => {
+          return Message.find({ conversationId }).populate('sender')
         }
       },
     Mutation: {

@@ -153,3 +153,17 @@ export const getConversations = gql `
     }
   }
 `;
+
+export const getMessages = gql `
+  query getMessages ($conversationId: String!) {
+    getMessages (conversationId: $conversationId) {
+      _id
+      sender {
+        _id
+        username
+        propic
+      }
+      text
+    }
+  }
+`;
