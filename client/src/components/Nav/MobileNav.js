@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 
 function MobileNav() {
     const location = useLocation();
-    if (!Auth.loggedIn() || location.pathname.includes('/comments')) {
+    if (!Auth.loggedIn() || location.pathname.includes('/comments') || location.pathname.includes('/message')) {
         return <></>
     }
     return (
