@@ -3,12 +3,16 @@ import { useQuery } from '@apollo/client';
 import React, { useEffect, useRef } from 'react';
 import Auth from '../utils/auth';
 import { io } from 'socket.io-client'
-import { GET_ME } from '../utils/queries';
+import { getConversations, GET_ME } from '../utils/queries';
 import { Link, Redirect } from 'react-router-dom';
+import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 
 function MainChat() {
     const { data } = useQuery(GET_ME);
     const user = data?.me;
+    const yourID = data?.me?._id || {};
+
+    const { data: dataB, loading } = useQuery(getConversations);
 
     const socket = useRef();
 
@@ -39,32 +43,31 @@ function MainChat() {
                     <div className='search-container'>
                         <input placeholder='Search' className='search-bar'/>
                     </div>
-                    <Link to={`/message`} className='message-card'>
-                        <section className='image-container image-chat small-image-container'>
-                            <p></p>
-                        
+                    {loading ? (
+                        <section className='profile-search-load-container'>
+                            <ThreeDotsWave/>
                         </section>
-                        <div className='notification'></div>
-                        <section className='message-titles'>
-                            <p>Jeff Beck</p>
-                            {/* Will have to shorten when getting data */}
-                            <p className='light-text'>Hey how is it going</p>
-                        </section>
-                    </Link> 
-                    <Link to={`/message`} className='message-card'>
-                        <section className='image-container small-image-container'>
-                            <p></p>
-                        </section>
-                        <section className='message-titles'>
-                            <p>Smoe Mith</p>
-                            {/* Will have to shorten when getting data */}
-                            <p className='light-text'>I went out to lunch today </p>
-                        </section>
-                    </Link> 
+                    ) : (
+                        dataB?.getConversations?.map((conversation) => (
+                            conversation?.members?.filter(member => member?._id !== yourID).map(filter => (
+                                <Link to={`/message`} className='message-card' key={filter._id}>
+                                <section className='image-container image-chat small-image-container'>
+                                    <img className='small-pic' alt='Profile Icon' src={filter.propic}/>
+                                </section>
+                                <section className='message-titles'>
+                                    <p>{filter.username}</p>
+                                    {/* Will have to shorten when getting data */}
+                                    <p className='light-text'>Hello</p>
+                                </section>
+                            </Link> 
+                            ))
+                            
+                            )
+                        )
+                    )}
                 </section>
             </section>
         </motion.div>
-    )
-}
+    )}
 
 export default MainChat
