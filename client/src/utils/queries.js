@@ -167,3 +167,13 @@ export const getMessages = gql `
     }
   }
 `;
+
+export const allMessages = gql `
+  query allMessages {
+    allMessages {
+      _id
+      conversationId
+      text
+    }
+  }
+`;

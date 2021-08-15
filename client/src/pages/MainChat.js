@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import React, { useEffect, useRef } from 'react';
 import Auth from '../utils/auth';
 import { io } from 'socket.io-client'
-import { getConversations, GET_ME } from '../utils/queries';
+import { allMessages, getConversations, GET_ME } from '../utils/queries';
 import { Link, Redirect } from 'react-router-dom';
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 
@@ -13,7 +13,8 @@ function MainChat() {
     const yourID = data?.me?._id || {};
 
     const { data: dataB, loading } = useQuery(getConversations);
-
+    const { data: messageData } = useQuery(allMessages);
+    const messages = messageData?.allMessages;
     const socket = useRef();
 
     useEffect(() => {
@@ -62,7 +63,13 @@ function MainChat() {
                                 <section className='message-titles'>
                                     <p>{filter.username}</p>
                                     {/* Will have to shorten when getting data */}
-                                    <p className='light-text'>Hello</p>
+                                    {messages?.filter(message => message?.conversationId === conversation._id)?.reverse()?.map((newMessage, i) => (
+                                        i === 0 ? (
+                                            <p key={newMessage?._id} className='light-text'>{newMessage.text}</p>
+                                        ) : (
+                                            <div key={newMessage?._id}></div>
+                                        )
+                                    ))}
                                 </section>
                             </Link> 
                             ))

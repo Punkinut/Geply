@@ -62,6 +62,7 @@ type Query {
     userPosts(id: String!): [Post]
     getConversations: [Conversation]
     getMessages(conversationId: String!): [Message]
+    allMessages: [Message]
 }
 
 type Mutation {

@@ -517,6 +517,7 @@ select:focus {
 .message-titles {
   display: flex;
   flex-direction: column;
+  row-gap: 5px;
   justify-content: space-between;
   height: 37px;
   width: 60%;

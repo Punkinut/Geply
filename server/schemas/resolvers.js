@@ -37,6 +37,9 @@ const resolvers = {
         },
         getMessages: async (_, {conversationId}) => {
           return Message.find({ conversationId }).populate('sender')
+        },
+        allMessages: async () => {
+          return Message.find()
         }
       },
     Mutation: {
