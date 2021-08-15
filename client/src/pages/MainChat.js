@@ -1,33 +1,19 @@
 import { motion } from 'framer-motion';
 import { useQuery } from '@apollo/client';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Auth from '../utils/auth';
-import { io } from 'socket.io-client'
+
 import { allMessages, getConversations, GET_ME } from '../utils/queries';
 import { Link, Redirect } from 'react-router-dom';
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 
 function MainChat() {
     const { data } = useQuery(GET_ME);
-    const user = data?.me;
     const yourID = data?.me?._id || {};
 
     const { data: dataB, loading } = useQuery(getConversations);
     const { data: messageData } = useQuery(allMessages);
     const messages = messageData?.allMessages;
-    const socket = useRef();
-
-    useEffect(() => {
-        socket.current = io('ws://localhost:8900');
-    }, [])
-    
-    useEffect(() => {
-        socket.current.emit('addUser', user?._id);
-        socket.current.on('getUsers', users => {
-            console.log(users)
-        })
-    }, [user])
-
     
     if (!Auth.loggedIn()){
         return <Redirect to='/'/>
@@ -58,7 +44,6 @@ function MainChat() {
                                     ) : (
                                         <img className='small-pic' alt='Profile Icon' src={filter.propic}/>
                                     )}
-                                    
                                 </section>
                                 <section className='message-titles'>
                                     <p>{filter.username}</p>
@@ -73,7 +58,6 @@ function MainChat() {
                                 </section>
                             </Link> 
                             ))
-                            
                             )
                         )
                     )}

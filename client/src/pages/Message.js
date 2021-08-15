@@ -1,11 +1,30 @@
 import { motion } from 'framer-motion';
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link, Redirect } from 'react-router-dom';
 import Auth from '../utils/auth';
 import Arrow from '../images/left-arrow.svg'
 import Send from '../images/send.svg'
+import { useQuery } from '@apollo/client';
+import { GET_ME } from '../utils/queries';
+import { io } from 'socket.io-client'
 
 function Message() {
+    const { data } = useQuery(GET_ME);
+    const user = data?.me;
+    const socket = useRef();
+
+    useEffect(() => {
+        socket.current = io('ws://localhost:8900');
+    }, [])
+    
+    useEffect(() => {
+        socket.current.emit('addUser', user?._id);
+        socket.current.on('getUsers', users => {
+            console.log(users)
+        })
+    }, [user])
+
+
     if (!Auth.loggedIn()){
         return <Redirect to='/'/>
         }
