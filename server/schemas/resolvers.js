@@ -41,7 +41,7 @@ const resolvers = {
       },
     Mutation: {
         createConversation: async (_, {id}, context) => {
-          return Conversation.create({members: [id, '610c8c0859c624707e3c8346']})
+          return Conversation.create({members: [id, context.user._id]})
         },
         createMessage: async (_, {conversationId, text}, context) => {
           return Message.create({conversationId: conversationId, sender: context.user._id, text: text})
