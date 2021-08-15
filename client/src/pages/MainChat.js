@@ -50,9 +50,14 @@ function MainChat() {
                     ) : (
                         dataB?.getConversations?.map((conversation) => (
                             conversation?.members?.filter(member => member?._id !== yourID).map(filter => (
-                                <Link to={`/message`} className='message-card' key={filter._id}>
+                                <Link to={`/message/${conversation._id}`} className='message-card' key={filter._id}>
                                 <section className='image-container image-chat small-image-container'>
-                                    <img className='small-pic' alt='Profile Icon' src={filter.propic}/>
+                                    {filter.propic === '#' ? (
+                                        <p>{filter.username[0].toUpperCase()}</p>
+                                    ) : (
+                                        <img className='small-pic' alt='Profile Icon' src={filter.propic}/>
+                                    )}
+                                    
                                 </section>
                                 <section className='message-titles'>
                                     <p>{filter.username}</p>
