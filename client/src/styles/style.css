@@ -399,7 +399,15 @@ select:focus {
   position: absolute;
   top: 100px;
   left: 30px;
+  z-index: 9999999;
   display: none;
+}
+
+.spec-left-arrow {
+  position: fixed;
+  top: 90px;
+  left: 30px;
+  z-index: 9999999;
 }
 
 .choice-container {
@@ -722,7 +730,6 @@ select:focus {
 
 .com {
   display: flex;
-  column-gap: 20px;
   align-items: center;
 }
 
@@ -733,14 +740,14 @@ select:focus {
 .message-header {
   position: relative;
   width: 100%;
-  height: 80px;
+  height: 110px;
   padding: 0px 30px;
   position: fixed;
   z-index: 999999;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--blue-gray);
+  background-color: white;
 }
 
 .realtime-message {
@@ -748,9 +755,10 @@ select:focus {
 }
 
 .img-propic {
-  width: 75px;
+  width: 50px;
   height: 50px;
   font-size: 13px;
+  margin-right: 20px;
   color: #303030bb;
   border-radius: 50px;
   background-color: var(--blue-gray);
@@ -765,13 +773,14 @@ select:focus {
   background-color: var(--blue-gray);
   line-height: 1.3rem;
   border-radius: 20px;
-  width: 100%;
+  min-width: 10%;
+  max-width: 70%;
   display: flex;
   flex-wrap: wrap;
 }
 
 .comment-pic {
-  width: 60px;
+  width: 50px;
 }
 
 .comment-nav {
@@ -793,7 +802,8 @@ select:focus {
   background-color: var(--blue-gray);
   line-height: 1.3rem;
   border-radius: 20px;
-  width: 80%;
+  min-width: 10%;
+  max-width: 80%;
   display: flex;
   margin-right: 0px;
   margin-left: auto;
@@ -830,6 +840,13 @@ select:focus {
 }
 
 @media screen and (max-width: 400px) {
+  .spec-left-arrow {
+    position: fixed;
+    top: 43px;
+    left: 30px;
+    z-index: 9999999;
+  }
+
   .addPost {
     display: flex;
     align-items: center;

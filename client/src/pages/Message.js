@@ -19,7 +19,6 @@ function Message() {
     });
 
     const chatMessages = messages?.getMessages || [];
-    console.log(chatMessages)
     
     const socket = useRef();
 
@@ -46,8 +45,8 @@ function Message() {
         >
             <section className='page-container'>
                 <section className='posts-container'>
+                <Link to='/chat'><img className='icon spec-left-arrow' src={Arrow} alt='Arrow Icon'/></Link>
                     <div className='message-header'>
-                        <Link to='/chat'><img className='icon' src={Arrow} alt='Arrow Icon'/></Link>
                         <p>Jeff Beck</p>
                         <div></div>
                     </div>
