@@ -1,16 +1,26 @@
 import { motion } from 'framer-motion';
 import React, { useEffect, useRef } from 'react'
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useParams } from 'react-router-dom';
 import Auth from '../utils/auth';
 import Arrow from '../images/left-arrow.svg'
 import Send from '../images/send.svg'
 import { useQuery } from '@apollo/client';
-import { GET_ME } from '../utils/queries';
+import { getMessages, GET_ME } from '../utils/queries';
 import { io } from 'socket.io-client'
+import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 
 function Message() {
+    const { id } = useParams();
     const { data } = useQuery(GET_ME);
     const user = data?.me;
+
+    const { data: messages, loading } = useQuery(getMessages, {
+        variables: { conversationId: id }
+    });
+
+    const chatMessages = messages?.getMessages || [];
+    console.log(chatMessages)
+    
     const socket = useRef();
 
     useEffect(() => {
@@ -42,23 +52,40 @@ function Message() {
                         <div></div>
                     </div>
                 <div className='realtime-message'>
-                   <section className='comment-container'>
-                    <section className='com com2'>
-                        <div className='img-propic'>
-                            <img alt='' className='comment-pic'/>
-                        </div>
-                        <p className='real-comment light-text'>Hello my name is Tom and I was just testing the styling of this!</p>
-                    </section>
-                    <section className='com'>
-                        <p className='blue-comment blue-message light-text'>Hello my name is Tom and I was just testing the styling of this!</p>
-                    </section>
-                </section>
-                <section className='comment-nav'>
-                        <form className='comment-form'>
-                            <input className='light-text comment-input' placeholder='Type a message...' type='text' required></input>
-                            <button type='submit' className='comment-submit'><img className='icon post-icon' alt='Send Icon' src={Send}/></button>
-                        </form>
-                    </section> 
+                {loading ? (
+                        <section className='profile-search-load-container'>
+                            <ThreeDotsWave/>
+                        </section>
+                    ) : (
+                        <>
+                        <section className='comment-container'>
+                        {chatMessages.map((message) => (
+                            message?.sender?._id !== user?._id ? (
+                                <section className='com com2' key={message._id}>
+                                    <div className='img-propic'>
+                                        {message?.sender?.propic === '#' ? (
+                                            <p>{message?.sender?.username[0].toUpperCase()}</p>
+                                        ) : (<img alt='Propic' className='comment-pic' src={message?.sender?.propic}/>)}
+                                        
+                                    </div>
+                                    <p className='real-comment light-text'>{message.text}</p>
+                                </section>
+                            ) : (
+                                <section className='com' key={message._id}>
+                                    <p className='blue-comment blue-message light-text'>{message.text}</p>
+                                </section>
+                            )
+                        ))}
+                        </section>
+                        <section className='comment-nav'>
+                            <form className='comment-form'>
+                                <input className='light-text comment-input' placeholder='Type a message...' type='text' required></input>
+                                <button type='submit' className='comment-submit'><img className='icon post-icon' alt='Send Icon' src={Send}/></button>
+                            </form>
+                        </section>
+                        </>
+                    )}
+                    
                 </div>
                 
                 </section>

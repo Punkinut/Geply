@@ -517,7 +517,7 @@ select:focus {
 .message-titles {
   display: flex;
   flex-direction: column;
-  row-gap: 5px;
+  row-gap: 6px;
   justify-content: space-between;
   height: 37px;
   width: 60%;
@@ -585,7 +585,7 @@ select:focus {
   left: 0px;
   top: 0px;
   opacity: 0;
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .caption-input {
@@ -748,8 +748,10 @@ select:focus {
 }
 
 .img-propic {
-  width: 70px;
+  width: 75px;
   height: 50px;
+  font-size: 13px;
+  color: #303030bb;
   border-radius: 50px;
   background-color: var(--blue-gray);
   overflow: hidden;
