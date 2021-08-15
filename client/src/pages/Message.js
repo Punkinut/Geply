@@ -47,7 +47,7 @@ function Message() {
                 <section className='posts-container'>
                 <Link to='/chat'><img className='icon spec-left-arrow' src={Arrow} alt='Arrow Icon'/></Link>
                     <div className='message-header'>
-                        <p>Jeff Beck</p>
+                        <p>Placeholder</p>
                         <div></div>
                     </div>
                 <div className='realtime-message'>
