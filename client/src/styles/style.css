@@ -622,10 +622,8 @@ select:focus {
 
 .post-icon {
   width: 18px !important;
-  position: relative;
-  left: 2px;
   opacity: 0.2;
-  transform: rotate(-45deg);
+  transform: rotate(-90deg);
 }
 
 .posts-container {
@@ -827,6 +825,9 @@ select:focus {
   height: 45px;
   width: 45px;
   border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--blue-gray);
   border: none;
   cursor: pointer;
