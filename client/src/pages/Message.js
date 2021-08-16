@@ -11,7 +11,6 @@ import { createMessage } from '../utils/mutations';
 
 // AUTOSCROLL
 // CREATING CONVERSATION
-// ADD POLLING TO HOME PAGE
 
 function Message() {
 
