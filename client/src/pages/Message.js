@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion';
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { Link, Redirect, useParams } from 'react-router-dom';
 import Auth from '../utils/auth';
 import Arrow from '../images/left-arrow.svg'
 import Send from '../images/send.svg'
 import { useMutation, useQuery } from '@apollo/client';
 import { getMessages, GET_ME } from '../utils/queries';
-import { io } from 'socket.io-client'
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 import { createMessage } from '../utils/mutations';
 
@@ -20,23 +19,19 @@ function Message() {
     const user = data?.me;
 
     const { data: messages, loading } = useQuery(getMessages, {
-        variables: { conversationId: id }
+        variables: { conversationId: id },
+        pollInterval: 500
     });
+
+    // const { data: conversationData } = useQuery(oneConversation, {
+    //     variables: {id}
+    // });
+
+    // const currentChat = conversationData?.oneConversation;
 
     const chatMessages = messages?.getMessages || [];
     
-    const socket = useRef();
 
-    useEffect(() => {
-        socket.current = io('ws://localhost:8900');
-    }, [])
-    
-    useEffect(() => {
-        socket.current.emit('addUser', user?._id);
-        socket.current.on('getUsers', users => {
-            console.log(users)
-        })
-    }, [user])
 
     const handleChange = (e) => {
         const { value } = e.target;
@@ -52,13 +47,13 @@ function Message() {
         })
         setText('')
 
-        const receiverId = 'TODO'
+        // const receiverId = currentChat?.members?.find( member => member !== user._id);
 
-        socket.current.emit('sendMessage', {
-            userId: user?._id,
-            receiverId,
-            text
-        })
+        // socket.current.emit('sendMessage', {
+        //     userId: user?._id,
+        //     receiverId: receiverId._id,
+        //     text
+        // });
     };
 
 
