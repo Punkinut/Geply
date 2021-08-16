@@ -9,8 +9,6 @@ import { getMessages, GET_ME, oneConversation } from '../utils/queries';
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 import { createMessage } from '../utils/mutations';
 
-// CREATING CONVERSATION
-
 function Message() {
     
     const scrollRef = useRef();

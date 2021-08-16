@@ -2,18 +2,21 @@ import { useMutation, useQuery } from '@apollo/client';
 import { motion } from 'framer-motion';
 import React from 'react'
 import  { Link, Redirect, useParams } from 'react-router-dom'
+import { useHistory } from 'react-router';
 import GrayButton from '../components/Tools/GrayButton';
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 import WideButton from '../components/Tools/WideButton';
 import Auth from '../utils/auth';
-import { addFollowing, removeFollowing } from '../utils/mutations';
+import { addFollowing, createConversation, removeFollowing } from '../utils/mutations';
 import { GET_ME, singleUser } from '../utils/queries';
 
 function User() {
     const { id } = useParams();
+    const history = useHistory();
 
     const [follow] = useMutation(addFollowing);
     const [unfollow] = useMutation(removeFollowing);
+    const [message] = useMutation(createConversation);
 
     const { loading, data } = useQuery(singleUser, {
         variables: { id }
@@ -30,6 +33,12 @@ function User() {
     const minusFollow = async () => {
         await unfollow({ variables: {id}})
     };
+
+    const newMessage = async () => {
+        const newConvo = await message({ variables: {id}})
+        const convoId = newConvo?.data?.createConversation?._id;
+        history.replace(`/message/${convoId}`)
+    }
 
     if (!Auth.loggedIn()){
     return <Redirect to='/welcome'/>
@@ -70,6 +79,7 @@ function User() {
                             ) : (
                                     <div onClick={plusFollow}><WideButton word="Follow"/></div>
                             )}
+                        <div onClick={newMessage}><GrayButton word="Message"/></div>
                         <Link to={`/posts/${profile._id}`}><GrayButton word="Posts"/></Link>
                     </motion.div>
                 </section>

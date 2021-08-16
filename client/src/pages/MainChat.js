@@ -11,7 +11,10 @@ function MainChat() {
     const { data } = useQuery(GET_ME);
     const yourID = data?.me?._id || {};
 
-    const { data: dataB, loading } = useQuery(getConversations);
+    const { data: dataB, loading } = useQuery(getConversations, {
+        fetchPolicy: 'network-only',
+        pollInterval: 3000
+    });
     const { data: messageData } = useQuery(allMessages, {
         pollInterval: 500
     });
