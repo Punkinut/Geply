@@ -5,9 +5,13 @@ import Auth from '../utils/auth';
 import Arrow from '../images/left-arrow.svg'
 import Send from '../images/send.svg'
 import { useMutation, useQuery } from '@apollo/client';
-import { getMessages, GET_ME } from '../utils/queries';
+import { getMessages, GET_ME, oneConversation } from '../utils/queries';
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 import { createMessage } from '../utils/mutations';
+
+// AUTOSCROLL
+// CREATING CONVERSATION
+// ADD POLLING TO HOME PAGE
 
 function Message() {
 
@@ -23,16 +27,14 @@ function Message() {
         pollInterval: 500
     });
 
-    // const { data: conversationData } = useQuery(oneConversation, {
-    //     variables: {id}
-    // });
+    const { data: conversationData } = useQuery(oneConversation, {
+        variables: {id}
+    });
 
-    // const currentChat = conversationData?.oneConversation;
-
+    const receiver = conversationData?.oneConversation?.members?.filter( member => member._id !== user._id) || {};
+    
     const chatMessages = messages?.getMessages || [];
     
-
-
     const handleChange = (e) => {
         const { value } = e.target;
         setText(value)
@@ -46,14 +48,6 @@ function Message() {
             refetchQueries: [{query: getMessages, variables: {conversationId: id}}]
         })
         setText('')
-
-        // const receiverId = currentChat?.members?.find( member => member !== user._id);
-
-        // socket.current.emit('sendMessage', {
-        //     userId: user?._id,
-        //     receiverId: receiverId._id,
-        //     text
-        // });
     };
 
 
@@ -70,7 +64,7 @@ function Message() {
                 <section className='posts-container'>
                 <Link to='/chat'><img className='icon spec-left-arrow' src={Arrow} alt='Arrow Icon'/></Link>
                     <div className='message-header'>
-                        <p>Placeholder</p>
+                        <p>{receiver[0]?.username}</p>
                         <div></div>
                     </div>
                 <div className='realtime-message'>
