@@ -1,15 +1,20 @@
 import { motion } from 'framer-motion';
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, Redirect, useParams } from 'react-router-dom';
 import Auth from '../utils/auth';
 import Arrow from '../images/left-arrow.svg'
 import Send from '../images/send.svg'
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { getMessages, GET_ME } from '../utils/queries';
 import { io } from 'socket.io-client'
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
+import { createMessage } from '../utils/mutations';
 
 function Message() {
+
+    const [ text, setText ] = useState('');
+    const [messageAdd] = useMutation(createMessage);
+
     const { id } = useParams();
     const { data } = useQuery(GET_ME);
     const user = data?.me;
@@ -32,6 +37,18 @@ function Message() {
             console.log(users)
         })
     }, [user])
+
+    const handleChange = (e) => {
+        const { value } = e.target;
+        setText(value)
+    };
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await messageAdd({ variables: {conversationId: id, text: text}})
+        setText('')
+    };
 
 
     if (!Auth.loggedIn()){
@@ -77,8 +94,8 @@ function Message() {
                         ))}
                         </section>
                         <section className='comment-nav'>
-                            <form className='comment-form'>
-                                <input className='light-text comment-input' placeholder='Type a message...' type='text' required></input>
+                            <form className='comment-form' onSubmit={handleSubmit}>
+                                <input value={text} onChange={handleChange} className='light-text comment-input' placeholder='Type a message...' type='text' required></input>
                                 <button type='submit' className='comment-submit'><img className='icon post-icon' alt='Send Icon' src={Send}/></button>
                             </form>
                         </section>
