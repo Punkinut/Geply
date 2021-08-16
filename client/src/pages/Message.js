@@ -46,7 +46,10 @@ function Message() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await messageAdd({ variables: {conversationId: id, text: text}})
+        await messageAdd({ 
+            variables: {conversationId: id, text: text},
+            refetchQueries: [{query: getMessages, variables: {conversationId: id}}]
+        })
         setText('')
     };
 
