@@ -61,6 +61,7 @@ type Query {
     singleUser(id: String!): User
     userPosts(id: String!): [Post]
     getConversations: [Conversation]
+    oneConversation (id: String!): Conversation
     getMessages(conversationId: String!): [Message]
     allMessages: [Message]
 }

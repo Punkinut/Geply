@@ -35,6 +35,9 @@ const resolvers = {
         getConversations: async (_, args, context) => {
           return Conversation.find( { members: context.user._id}).populate('members')
         },
+        oneConversation: async(_, { id }) => {
+          return Conversation.findOne({ _id: id }).populate('members')
+        },
         getMessages: async (_, {conversationId}) => {
           return Message.find({ conversationId }).populate('sender')
         },

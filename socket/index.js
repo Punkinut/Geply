@@ -15,12 +15,23 @@ const removeUser = (sokcetId) => {
     users = users.filter(user => user.socketId !== sokcetId)
 }
 
+const getUser = (userId) => {
+    return users.find(user => user.userId === userId)
+}
+
 io.on('connection', (socket) => {
     io.emit('Welcome, this is socket.io')
     socket.on('addUser', userId => {
         addUser(userId, socket.id)
         io.emit('getUsers', users)
     });
+
+socket.on('sendMessage',({userId, receiverId, text}) => {
+    const user = getUser(receiverId);
+    io.socket(user.socketId).emit('getMessage', {
+        userId, text
+    })
+})
 
     socket.on('disconnect', () => {
         removeUser(socket.id)

@@ -154,6 +154,19 @@ export const getConversations = gql `
   }
 `;
 
+export const oneConversation = gql `
+  query oneConversation ($id: String!) {
+    oneConversation(id: $id) {
+  		_id
+      members {
+        _id
+        username
+        propic
+      }
+    }
+  }
+`;
+
 export const getMessages = gql `
   query getMessages ($conversationId: String!) {
     getMessages (conversationId: $conversationId) {

@@ -51,6 +51,14 @@ function Message() {
             refetchQueries: [{query: getMessages, variables: {conversationId: id}}]
         })
         setText('')
+
+        const receiverId = 'TODO'
+
+        socket.current.emit('sendMessage', {
+            userId: user?._id,
+            receiverId,
+            text
+        })
     };
 
 
