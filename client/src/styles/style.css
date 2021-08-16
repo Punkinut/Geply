@@ -805,6 +805,7 @@ select:focus {
   min-width: 10%;
   max-width: 80%;
   display: flex;
+  opacity: 0.9;
   margin-right: 0px;
   margin-left: auto;
   flex-wrap: wrap;
