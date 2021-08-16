@@ -13,7 +13,8 @@ import { addLike, removeLike } from '../utils/mutations';
 function Home() {
 
     const { data, loading } = useQuery(allPosts, {
-        fetchPolicy: 'network-only'
+        fetchPolicy: 'network-only',
+        pollInterval: 500
     });
 
     const [like] = useMutation(addLike);
