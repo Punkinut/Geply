@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, Redirect, useParams } from 'react-router-dom';
 import Auth from '../utils/auth';
 import Arrow from '../images/left-arrow.svg'
@@ -13,7 +13,9 @@ import { createMessage } from '../utils/mutations';
 // CREATING CONVERSATION
 
 function Message() {
-
+    
+    const scrollRef = useRef();
+    
     const [ text, setText ] = useState('');
     const [messageAdd] = useMutation(createMessage);
 
@@ -30,7 +32,11 @@ function Message() {
         variables: {id}
     });
 
-    const receiver = conversationData?.oneConversation?.members?.filter( member => member._id !== user._id) || {};
+    useEffect(() => {
+        scrollRef.current?.scrollIntoView({ block: "end", inline: "nearest"});
+      }, [messages]);
+
+    const receiver = conversationData?.oneConversation?.members?.filter( member => member?._id !== user._id) || {};
     
     const chatMessages = messages?.getMessages || [];
     
@@ -49,7 +55,6 @@ function Message() {
         setText('')
     };
 
-
     if (!Auth.loggedIn()){
         return <Redirect to='/'/>
         }
@@ -59,7 +64,7 @@ function Message() {
         animate={{ opacity: 1}}
         exit={{ opacity: 0}}
         >
-            <section className='page-container'>
+            <section ref={scrollRef} className='page-container'>
                 <section className='posts-container'>
                 <Link to='/chat'><img className='icon spec-left-arrow' src={Arrow} alt='Arrow Icon'/></Link>
                     <div className='message-header'>

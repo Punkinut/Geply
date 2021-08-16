@@ -63,6 +63,7 @@ function MainChat() {
                     )}
                 </section>
             </section>
+            <div></div>
         </motion.div>
     )}
 
