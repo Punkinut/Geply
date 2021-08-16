@@ -525,10 +525,13 @@ select:focus {
 .message-titles {
   display: flex;
   flex-direction: column;
-  row-gap: 6px;
-  justify-content: space-between;
-  height: 37px;
+  height: auto;
   width: 60%;
+}
+
+.message-user {
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 
 .light-text {

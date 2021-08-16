@@ -51,8 +51,7 @@ function MainChat() {
                                     )}
                                 </section>
                                 <section className='message-titles'>
-                                    <p>{filter.username}</p>
-                                    {/* Will have to shorten when getting data */}
+                                    <p className='message-user'>{filter.username}</p>
                                     {messages?.filter(message => message?.conversationId === conversation._id)?.reverse()?.map((newMessage, i) => (
                                         i === 0 ? (
                                             <p key={newMessage?._id} className='light-text'>{newMessage.text.slice(0, 20)}</p>

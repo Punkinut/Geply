@@ -96,7 +96,7 @@ function Message() {
                         </section>
                         <section className='comment-nav'>
                             <form className='comment-form' onSubmit={handleSubmit}>
-                                <input value={text} onChange={handleChange} className='light-text comment-input' placeholder='Type a message...' type='text' required></input>
+                                <input value={text} onChange={handleChange} className='light-text comment-input' placeholder='Message...' type='text' required></input>
                                 <button type='submit' className='comment-submit'><img className='icon post-icon' alt='Send Icon' src={Send}/></button>
                             </form>
                         </section>
