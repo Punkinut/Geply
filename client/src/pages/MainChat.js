@@ -50,7 +50,7 @@ function MainChat() {
                                     {/* Will have to shorten when getting data */}
                                     {messages?.filter(message => message?.conversationId === conversation._id)?.reverse()?.map((newMessage, i) => (
                                         i === 0 ? (
-                                            <p key={newMessage?._id} className='light-text'>{newMessage.text.slice(0, 23)}..</p>
+                                            <p key={newMessage?._id} className='light-text'>{newMessage.text.slice(0, 23)}</p>
                                         ) : (
                                             <div key={newMessage?._id}></div>
                                         )
