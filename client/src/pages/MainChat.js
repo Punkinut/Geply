@@ -28,7 +28,7 @@ function MainChat() {
 
     const handleChange = (e) => {
         const { value } = e.target;
-        setSearch(value);
+        setSearch(value.toLowerCase());
     };
     
     if (!Auth.loggedIn()){
@@ -60,25 +60,30 @@ function MainChat() {
                         ) : (
                             dataB?.getConversations?.map((conversation) => (
                             conversation?.members?.filter(member => member?._id !== yourID).map(filter => (
-                                <Link to={`/message/${conversation._id}`} className='message-card' key={filter._id}>
-                                <section className='image-container image-chat small-image-container'>
-                                    {filter.propic === '#' ? (
-                                        <p>{filter.username[0].toUpperCase()}</p>
-                                    ) : (
-                                        <img className='small-pic' alt='Profile Icon' src={filter.propic}/>
-                                    )}
-                                </section>
-                                <section className='message-titles'>
-                                    <p className='message-user'>{filter.username}</p>
-                                    {messages?.filter(message => message?.conversationId === conversation._id)?.reverse()?.map((newMessage, i) => (
-                                        i === 0 ? (
-                                            <p key={newMessage?._id} className='light-text'>{newMessage.text.slice(0, 20)}</p>
-                                        ) : (
-                                            <div key={newMessage?._id}></div>
-                                        )
-                                    ))}
-                                </section>
-                            </Link> 
+                                filter.username.toLowerCase().includes(search) ? (
+                                        <Link to={`/message/${conversation._id}`} className='message-card' key={filter._id}>
+                                            <section className='image-container image-chat small-image-container'>
+                                                {filter.propic === '#' ? (
+                                                    <p>{filter.username[0].toUpperCase()}</p>
+                                                ) : (
+                                                    <img className='small-pic' alt='Profile Icon' src={filter.propic}/>
+                                                )}
+                                            </section>
+                                            <section className='message-titles'>
+                                                <p className='message-user'>{filter.username}</p>
+                                                {messages?.filter(message => message?.conversationId === conversation._id)?.reverse()?.map((newMessage, i) => (
+                                                    i === 0 ? (
+                                                        <p key={newMessage?._id} className='light-text'>{newMessage.text.slice(0, 20)}</p>
+                                                    ) : (
+                                                        <div key={newMessage?._id}></div>
+                                                    )
+                                                ))}
+                                            </section>
+                                        </Link> 
+                                ) : (
+                                    <div key={filter._id}></div>
+                                )
+                            
                             ))
                             )
                         )
