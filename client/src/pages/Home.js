@@ -73,7 +73,7 @@ function Home() {
                                 <p>{post.username}</p>
                             </div>
                             <section className='feed-photo'>
-                            <img className='inside-photo' alt='Icon Pic' onLoad={onImgLoad} src={post.photo}/>
+                                <img className='inside-photo' alt='Icon Pic' onLoad={onImgLoad} src={post.photo}/>
                             </section>
                             <section>
                                 <p className='light-text description'>{post.caption}</p>
