@@ -827,7 +827,7 @@ select:focus {
 .comment-submit {
   height: 45px;
   width: 45px;
-  border-radius: 50px;
+  border-radius: 45px;
   display: flex;
   align-items: center;
   justify-content: center;

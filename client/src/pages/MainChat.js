@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useQuery } from '@apollo/client';
-import React from 'react';
+import React, { useState } from 'react';
 import Auth from '../utils/auth';
 
 import { allMessages, getConversations, GET_ME } from '../utils/queries';
@@ -10,6 +10,9 @@ import GrayButton from '../components/Tools/GrayButton';
 import Hands from '../images/chat.svg'
 
 function MainChat() {
+
+    const [search, setSearch ] = useState('');
+
     const { data } = useQuery(GET_ME);
     const yourID = data?.me?._id || {};
 
@@ -22,6 +25,11 @@ function MainChat() {
         pollInterval: 500
     });
     const messages = messageData?.allMessages;
+
+    const handleChange = (e) => {
+        const { value } = e.target;
+        setSearch(value);
+    };
     
     if (!Auth.loggedIn()){
         return <Redirect to='/'/>
@@ -36,7 +44,7 @@ function MainChat() {
                 <section className='explore-container'>
                     <p className='username account-header explore-header'>Chat</p>
                     <div className='search-container'>
-                        <input placeholder='Search' className='search-bar'/>
+                        <input onChange={handleChange} placeholder='Search' className='search-bar'/>
                     </div>
                     {loading ? (
                         <section className='profile-search-load-container'>

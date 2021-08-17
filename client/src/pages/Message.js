@@ -97,7 +97,7 @@ function Message() {
                         <section className='comment-nav'>
                             <form className='comment-form' onSubmit={handleSubmit}>
                                 <input value={text} onChange={handleChange} className='light-text comment-input' placeholder='Message...' type='text' required></input>
-                                <button type='submit' className='comment-submit'><img className='icon post-icon' alt='Send Icon' src={Send}/></button>
+                                <motion.button whileHover={{opacity: 0.7}} type='submit' className='comment-submit'><img className='icon post-icon' alt='Send Icon' src={Send}/></motion.button>
                             </form>
                         </section>
                         </>

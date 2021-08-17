@@ -9,7 +9,7 @@ import { addFollowing, removeFollowing } from '../utils/mutations';
 
 function Friends() {
 
-    const [search, setSearch ] = useState('')
+    const [search, setSearch ] = useState('');
 
     const { data, loading } = useQuery(SEARCH_USERS, { variables: {username: search}});
     const { data: dataB } = useQuery(GET_ME);
