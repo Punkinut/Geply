@@ -8,7 +8,7 @@ import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
 import WideButton from '../components/Tools/WideButton';
 import Auth from '../utils/auth';
 import { addFollowing, createConversation, removeFollowing } from '../utils/mutations';
-import { GET_ME, singleUser } from '../utils/queries';
+import { getConversations, GET_ME, singleUser } from '../utils/queries';
 
 function User() {
     const { id } = useParams();
@@ -18,10 +18,17 @@ function User() {
     const [unfollow] = useMutation(removeFollowing);
     const [message] = useMutation(createConversation);
 
+
     const { loading, data } = useQuery(singleUser, {
         variables: { id }
     });
     const { data: dataB } = useQuery(GET_ME);
+
+    const { data: convoData } = useQuery(getConversations);
+
+    const conversations = convoData?.getConversations || [];
+
+    
 
     const profile = data?.singleUser || {};
     const yourProfile = dataB?.me?._id || {};
@@ -34,10 +41,24 @@ function User() {
         await unfollow({ variables: {id}})
     };
 
-    const newMessage = async () => {
+    const createConvo = async () => {
         const newConvo = await message({ variables: {id}})
         const convoId = newConvo?.data?.createConversation?._id;
         history.replace(`/message/${convoId}`)
+    }
+
+    const newMessage = async () => {
+        let idList = [];
+        await conversations.map((convo) => (
+           convo?.members.map((mem) => (
+               idList.push(mem._id)
+           ))
+        ));
+        if(idList.includes(id)) {
+            history.replace(`/chat`)
+        } else {
+            createConvo();
+        }
     }
 
     if (!Auth.loggedIn()){
