@@ -30,7 +30,7 @@ function Message() {
     });
 
     useEffect(() => {
-        scrollRef.current?.scrollIntoView({ block: "end", inline: "nearest"});
+        scrollRef.current?.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest"});
       }, [messages]);
 
     const receiver = conversationData?.oneConversation?.members?.filter( member => member?._id !== user._id) || {};

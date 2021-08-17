@@ -726,7 +726,7 @@ select:focus {
   display: flex;
   flex-direction: column;
   row-gap: 20px;
-  padding-bottom: 100px;
+  padding-bottom: 80px;
 }
 
 .com {

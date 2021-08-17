@@ -6,6 +6,8 @@ import Auth from '../utils/auth';
 import { allMessages, getConversations, GET_ME } from '../utils/queries';
 import { Link, Redirect } from 'react-router-dom';
 import ThreeDotsWave from '../components/Tools/ThreeDotsWave';
+import GrayButton from '../components/Tools/GrayButton';
+import Hands from '../images/chat.svg'
 
 function MainChat() {
     const { data } = useQuery(GET_ME);
@@ -15,6 +17,7 @@ function MainChat() {
         fetchPolicy: 'network-only',
         pollInterval: 3000
     });
+
     const { data: messageData } = useQuery(allMessages, {
         pollInterval: 500
     });
@@ -40,7 +43,14 @@ function MainChat() {
                             <ThreeDotsWave/>
                         </section>
                     ) : (
-                        dataB?.getConversations?.map((conversation) => (
+                        dataB?.getConversations[0] === undefined ? (
+                            <section className='explore-container'>
+                                <img alt='Person Icon' className='guy' src={Hands}/>
+                                <p className='light-text no-following'>Find friends to chat...</p>
+                                <Link to='/friends'><GrayButton word="Explore"/></Link>
+                            </section>
+                        ) : (
+                            dataB?.getConversations?.map((conversation) => (
                             conversation?.members?.filter(member => member?._id !== yourID).map(filter => (
                                 <Link to={`/message/${conversation._id}`} className='message-card' key={filter._id}>
                                 <section className='image-container image-chat small-image-container'>
@@ -64,6 +74,8 @@ function MainChat() {
                             ))
                             )
                         )
+                        )
+                        
                     )}
                 </section>
             </section>
