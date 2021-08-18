@@ -23,6 +23,7 @@ import Comments from './pages/Comments';
 import Posts from './pages/Posts';
 import MainChat from './pages/MainChat';
 import Message from './pages/Message';
+import ScrollToTop from './components/Tools/ScrollToTop';
 
 
 const httpLink = createHttpLink({
@@ -81,6 +82,7 @@ function App() {
                         <DesktopNav/>
                         <MobileNav/>
                         <Switch>
+                            <ScrollToTop>
                             <Route exact path='/' component={Home} />
                             <Route exact path='/friends' component={Friends} />
                             <Route exact path='/chat' component={MainChat} />
@@ -96,6 +98,7 @@ function App() {
                             <Route exact path='/welcome' component={LetsGo} />
                             <Route exact path='/login' component={Login} />
                             <Route exact path='/signup' component={SignUp} />
+                            </ScrollToTop>
                         </Switch> 
                   </>
                 </AnimatePresence>
