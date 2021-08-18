@@ -9,6 +9,7 @@ import GrayHeart from '../images/gray-heart.svg'
 import RedHeart from '../images/red-heart.svg'
 import Comment from '../images/comment.svg'
 import { addLike, removeLike } from '../utils/mutations';
+import ModalImage from "react-modal-image";
 
 function Home() {
 
@@ -73,7 +74,8 @@ function Home() {
                                 <p>{post.username}</p>
                             </div>
                             <section className='feed-photo'>
-                                <img className='inside-photo' alt='Icon Pic' onLoad={onImgLoad} src={post.photo}/>
+                                <ModalImage className='inside-photo' onLoad={onImgLoad} small={post.photo} hideDownload hideZoom medium={post.photo}/>
+                                {/* <img className='inside-photo' alt='Icon Pic' onLoad={onImgLoad} src={post.photo}/> */}
                             </section>
                             <section>
                                 <p className='light-text description'>{post.caption}</p>
