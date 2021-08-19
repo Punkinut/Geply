@@ -34,7 +34,7 @@ function Profile() {
                                 <img className='official-pic' alt='Pro Pic' src={data.me.propic}/>
                             </section>
                         )}
-                        <div className='online'></div>
+                        <div className={data?.me?.online ? 'online': 'offline'}></div>
                     </motion.div>
                     <p className='username'>{data.me.username}</p>
                     {data.me.followers?.length === 1 ? (
